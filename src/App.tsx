@@ -1,15 +1,17 @@
-
-import "./App.css";
+// import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import SnakeGame from "./SnakeGame/SnakeGame";
+import Wrapper from "./wrapper";
 
 function App() {
   return (
-    <div id="container">
-      <Canvas camera={{ fov: 45 }}>     
-       <SnakeGame />
+    // <div id="container">
+    <Wrapper>
+      <Canvas camera={{ fov: 90 }}>
+        <SnakeGame />
       </Canvas>
-    </div>
+    </Wrapper>
+    // </div>
   );
 }
 
