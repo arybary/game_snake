@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import Snake from "./Snake"; // Ваш компонент Snake
-import { gridSizeField } from "./constants";
+// import { gridSizeField } from "./constants";
 import Food from "./Food";
 import Ground from "./Ground";
+import { getField } from "../../engine/field/fieldPerLevel";
+import getLevelProps from "../../engine/levels/getLevelProps";
 
-const SnakeGame:React.FC= () => {
-  const gridSize = gridSizeField;
+const SnakeGame: React.FC = () => {
+  // const gridSize = gridSizeField;
+  getLevelProps(1);
+  const gridSize = getField();
   const [foodPosition, setFoodPosition] = useState(generateRandomPosition());
 
   // Генерация случайной позиции на поле

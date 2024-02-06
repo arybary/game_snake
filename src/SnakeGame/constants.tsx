@@ -1,2 +1,2 @@
-export const gridSizeField = 18
-export const speedSnake = 2
+export const gridSizeField = 10;
+export const speedSnake = 2;

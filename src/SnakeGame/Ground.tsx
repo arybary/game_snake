@@ -15,8 +15,8 @@ const Ground: React.FC<GroundProps> = ({ size }) => {
       <planeGeometry args={[size, size]} />
       <meshStandardMaterial
         color="gray"
-        map={texture}
-        map-repeat={[size, size]}
+        // map={texture}
+        // map-repeat={[size, size]}
       />
     </mesh>
   );
