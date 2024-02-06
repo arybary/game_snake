@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { gridSizeField, speedSnake } from "./constants";
+import {
+  //  gridSizeField,
+  speedSnake,
+} from "./constants";
+import { getField } from "../../engine/field/fieldPerLevel";
 
 interface SnakeProps {
   onEat: () => void;
@@ -8,12 +12,13 @@ interface SnakeProps {
 }
 
 const Snake: React.FC<SnakeProps> = ({ onEat, position }) => {
-  const gridSize = gridSizeField;
+  // const gridSize = gridSizeField;
+  const gridSize = getField();
   const initialSnake = [{ x: gridSize / 2, y: gridSize / 2 }];
   const [snake, setSnake] = useState(initialSnake);
   const [direction, setDirection] = useState("right");
   const [lastUpdate, setLastUpdate] = useState(0);
-   // Управление скоростью
+  // Управление скоростью
 
   useEffect(() => {
     const head = snake[0];
@@ -101,11 +106,7 @@ const Snake: React.FC<SnakeProps> = ({ onEat, position }) => {
       {snake.map((segment, index) => (
         <mesh
           key={index}
-          position={[
-            segment.x - gridSize / 2 + 0.5,
-            segment.y - gridSize / 2 + 0.5,
-            0.1,
-          ]}
+          position={[segment.x - gridSize / 2, segment.y - gridSize / 2, 0.1]}
         >
           <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial color={index === 0 ? "red" : "yellow"} />
