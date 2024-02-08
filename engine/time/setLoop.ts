@@ -25,6 +25,7 @@ function setLoop() {
     render();
   }
   if (checkTimerWorking()) setTimer(getTimerStep());
+
   setTimeout(setLoop, getTimerStep());
 }
 
