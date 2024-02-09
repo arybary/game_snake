@@ -18,6 +18,7 @@ function Game(props: GameProps) {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     if ((elapsedTime - lastUpdate) * 1000 > getTimerStep()) {
+      /*  Игровые механики  */
       setLastUpdate(elapsedTime);
     }
   });
@@ -27,11 +28,8 @@ function Game(props: GameProps) {
       <DREI.OrthographicCamera makeDefault position={[0, 0, 10]} zoom={100} />
       <ambientLight />
       <directionalLight position={[0, 0, 5]} intensity={1} />
-      {/* <DREI.OrbitControls /> */}
-
       <Playground size={gridSize} />
-      {/* <Food position={foodPosition} /> */}
-      {/* <Snake onEat={handleEat} position={foodPosition} /> */}
+      {/* Вывод всех объектов игры */}
     </>
   );
 }
