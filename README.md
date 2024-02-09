@@ -29,5 +29,10 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+<<<<<<<<< Temporary merge branch 1
 Hello world&
-Hello, World!
+=========
+Hello world^
+
+> > > > > > > > > Temporary merge branch 2
+> > > > > > > > > Hello, World!
