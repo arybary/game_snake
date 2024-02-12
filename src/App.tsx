@@ -5,7 +5,7 @@ import Game from "./Components/Game";
 function App() {
   return (
     <Wrapper>
-      <Canvas camera={{ fov: 90 }}>
+      <Canvas>
         <Game start={1} />
       </Canvas>
     </Wrapper>
