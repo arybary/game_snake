@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import Snake from "./Snake"; // Ваш компонент Snake
 // import { gridSizeField } from "./constants";
-import Food from "./Food";
+// import Food from "../Components/Food";
 import Ground from "./Ground";
 import { getField } from "../../engine/field/fieldPerLevel";
 import getLevelProps from "../../engine/levels/getLevelProps";
@@ -33,7 +33,7 @@ const SnakeGame: React.FC = () => {
       <OrbitControls />
 
       <Ground size={gridSize} />
-      <Food position={foodPosition} />
+      {/* <Food position={foodPosition} /> */}
       <Snake onEat={handleEat} position={foodPosition} />
     </>
   );
