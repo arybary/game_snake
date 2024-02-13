@@ -11,7 +11,6 @@ const Playground: React.FC<GroundProps> = ({ size }) => {
   const texture = useTexture(floorTexture);
   const { viewport } = useThree();
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-
   return (
     <mesh position={[0, 0, 0]} receiveShadow>
       <planeGeometry args={[viewport.width, viewport.height]} />
