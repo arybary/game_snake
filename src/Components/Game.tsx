@@ -24,6 +24,11 @@ function Game(props: GameProps) {
       setLastUpdate(elapsedTime);
     }
   });
+
+  // const foodCoords = getFoodCoord();
+  // const foodPosition = [foodCoords[0], foodCoords[1], 1];
+  // console.log(foodPosition);
+
   return (
     <>
       <OrthographicCamera makeDefault position={[0, 0, 10]} zoom={100} />
