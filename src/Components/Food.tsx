@@ -1,25 +1,25 @@
-import { getField } from "../../engine/field/fieldPerLevel";
-import { useThree } from "@react-three/fiber";
+import * as React from "react";
 import { getFoodCoord } from "../../engine/food/food";
+import { useState, useEffect } from "react";
+import { getField } from "../../engine/field/fieldPerLevel";
+import { Vector3 } from "@react-three/fiber";
 
 const Food: React.FC = () => {
-  const { viewport } = useThree();
-  const cellWidth = (viewport.width * 0.8) / getField();
-  let currentFoodCoord: number[] = getFoodCoord();
-  currentFoodCoord = currentFoodCoord.map(
-    (coord) => coord - Math.floor(getField() / 2 + 1)
-  );
+  const [foodPosition, setFoodPosition] = useState<Vector3>([0, 0, 0]);
+
+  useEffect(() => {
+    const updatedPosition = getFoodCoord();
+    const gridSize = getField(); // Предположим, что у вас есть функция getField, возвращающая размер поля
+    const adjustedX = Math.round(updatedPosition[0] - gridSize / 2);
+    const adjustedY = Math.round(updatedPosition[1] - gridSize / 2);
+    const adjustedPosition: Vector3 = [adjustedX, adjustedY, 0];
+    setFoodPosition(adjustedPosition);
+  }, []);
+  console.log(foodPosition);
 
   return (
-    <mesh
-      position={[
-        (cellWidth * currentFoodCoord[0]) / 0.801,
-        (cellWidth * currentFoodCoord[1]) / 0.83,
-        0,
-      ]}
-    >
-      <boxGeometry args={[cellWidth, cellWidth, cellWidth]} />
-      <meshStandardMaterial color="blue" />
+    <mesh position={foodPosition}>
+      <boxGeometry args={[1, 1, 1]} />
     </mesh>
   );
 };
