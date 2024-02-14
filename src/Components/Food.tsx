@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { getFoodCoord } from "../../engine/food/food";
 import { useState, useEffect } from "react";

@@ -13,7 +13,7 @@ type GameProps = {
 
 function Game(props: GameProps) {
   const { start } = props;
-  const [lastUpdate, setLastUpdate] = useState(0);
+  const gridSize = getField();
   setLevelEvent(start);
   const gridSize = getField();
   const { size } = useThree();
@@ -21,8 +21,9 @@ function Game(props: GameProps) {
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    if ((elapsedTime - lastUpdate) * 1000 > getTimerStep()) {
-      setLastUpdate(elapsedTime);
+    if ((elapsedTime - TIMER.getTimerStep()) * 1000 > TIMER.getTimerStep()) {
+      /*  Игровые механики  */
+      TIMER.setTimerStep(elapsedTime);
     }
   });
 
