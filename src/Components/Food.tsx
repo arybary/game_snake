@@ -1,20 +1,24 @@
 import * as React from "react";
-// import { useTexture } from "@react-three/drei";
-// import foodTexture from "../assets/food.png"; // Путь к текстуре еды
+import { getFoodCoord } from "../../engine/food/food";
+import { useState, useEffect } from "react";
+import { getField } from "../../engine/field/fieldPerLevel";
 
-interface FoodProps {
-  position: [number, number, number]; // Позиция еды на поле
-}
+const Food: React.FC = () => {
+  const [foodPosition, setFoodPosition] = useState([0, 0, 0]);
 
-const Food: React.FC<FoodProps> = ({ position }) => {
-  // const texture = useTexture(foodTexture);
-  const updatedPosition = [...position, 1];
-  console.log(updatedPosition);
+  useEffect(() => {
+    const updatedPosition = getFoodCoord();
+    const gridSize = getField(); // Предположим, что у вас есть функция getField, возвращающая размер поля
+    const adjustedX = Math.round(updatedPosition[0] - gridSize / 2);
+    const adjustedY = Math.round(updatedPosition[1] - gridSize / 2);
+    const adjustedPosition = [adjustedX, adjustedY, 0];
+    setFoodPosition(adjustedPosition);
+  }, []);
+  console.log(foodPosition);
 
   return (
-    <mesh position={updatedPosition}>
-      <boxGeometry args={[1, 1, 1]} /> {/* Пример геометрии для еды */}
-      {/* <meshStandardMaterial map={texture} /> Применение текстуры */}
+    <mesh position={foodPosition}>
+      <boxGeometry args={[1, 1, 1]} />
     </mesh>
   );
 };
