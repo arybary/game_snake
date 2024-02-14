@@ -2,10 +2,14 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import setLevelEvent from "../../engine/events/setLevelEvent";
 import { useState } from "react";
-import { getTimerStep } from "../../engine/time/timerStepPerLevel";
+import {
+  getTimerStep,
+  setTimerStep,
+} from "../../engine/time/timerStepPerLevel";
 import { getField } from "../../engine/field/fieldPerLevel";
 import Fields from "./Field";
 import Food from "./Food";
+import Snake from "./Snake";
 
 type GameProps = {
   start: number;
@@ -15,15 +19,14 @@ function Game(props: GameProps) {
   const { start } = props;
   const gridSize = getField();
   setLevelEvent(start);
-  const gridSize = getField();
   const { size } = useThree();
   // Получаем размеры экрана
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    if ((elapsedTime - TIMER.getTimerStep()) * 1000 > TIMER.getTimerStep()) {
+    if ((elapsedTime - getTimerStep()) * 1000 > getTimerStep()) {
       /*  Игровые механики  */
-      TIMER.setTimerStep(elapsedTime);
+      setTimerStep(elapsedTime);
     }
   });
 
@@ -39,6 +42,7 @@ function Game(props: GameProps) {
       <OrbitControls />
       <Fields size={gridSize} />
       <Food />
+      <Snake />
     </>
   );
 }
