@@ -1,32 +1,26 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
-import setLevelEvent from "../../engine/events/setLevelEvent";
+import { OrthographicCamera } from "@react-three/drei";
 import { useState } from "react";
-import {
-  getTimerStep,
-  setTimerStep,
-} from "../../engine/time/timerStepPerLevel";
+import { getTimerStep } from "../../engine/time/timerStepPerLevel";
 import { getField } from "../../engine/field/fieldPerLevel";
 import Fields from "./Field";
 import Food from "./Food";
 import Snake from "./Snake";
+import moveSnake from "../../engine/snake/moveSnake";
+import snakeCatchesFoodEvent from "../../engine/events/snakeCatchesFoodEvent";
 
-type GameProps = {
-  start: number;
-};
-
-function Game(props: GameProps) {
-  const { start } = props;
+function Game() {
   const gridSize = getField();
-  setLevelEvent(start);
   const { size } = useThree();
-  // Получаем размеры экрана
-
+  const [previousTime, setPreviousTime] = useState(0);
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    if ((elapsedTime - getTimerStep()) * 1000 > getTimerStep()) {
+    if ((elapsedTime - previousTime) * 1000 > getTimerStep()) {
       /*  Игровые механики  */
-      setTimerStep(elapsedTime);
+      moveSnake();
+      snakeCatchesFoodEvent();
+      /* ------------------- */
+      setPreviousTime(elapsedTime);
     }
   });
 
@@ -35,11 +29,10 @@ function Game(props: GameProps) {
       <OrthographicCamera
         makeDefault
         position={[0, 0, 10]}
-        zoom={Math.min(size.width, size.height) / gridSize} // Используем минимальный размер экрана
+        zoom={Math.min(size.width, size.height) / gridSize}
       />
       <ambientLight />
       <directionalLight position={[0, 0, 5]} intensity={1} />
-      <OrbitControls />
       <Fields size={gridSize} />
       <Food />
       <Snake />

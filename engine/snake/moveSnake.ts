@@ -21,7 +21,7 @@ import * as SNAKE from "./snake";
 function moveSnake(): void {
   if (checkTimerWorking()) {
     let snakeHead = { ...SNAKE.getSnakeHeadParams() };
-    let newBodyCoord = [...SNAKE.getSnakeBodyCoord()];
+    const newBodyCoord = [...SNAKE.getSnakeBodyCoord()];
     if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
       snakeHead.snakeHeadCoordX += snakeHead.snakeHeadStepX;
       snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY;
