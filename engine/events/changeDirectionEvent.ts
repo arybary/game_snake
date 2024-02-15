@@ -20,26 +20,25 @@ import { checkPause } from "./pauseEvent";
  */
 const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
-  let newEvent: Event,
-    newName = "",
-    newValue = 0;
+  let newName = "";
+  let newValue = 0;
   if (checkTimerStep()) return { name: newName, value: newValue };
-  if (e.code === "ArrowUp" && moveDirection !== "Y") {
-    newName = "Y";
-    newValue = -1;
-  } else if (e.code === "ArrowDown" && moveDirection !== "Y") {
-    newName = "Y";
+  if (e.code === "ArrowUp" && moveDirection !== "X") {
+    newName = "X";
     newValue = 1;
-  } else if (e.code === "ArrowLeft" && moveDirection !== "X") {
+  } else if (e.code === "ArrowDown" && moveDirection !== "X") {
     newName = "X";
     newValue = -1;
-  } else if (e.code === "ArrowRight" && moveDirection !== "X") {
-    newName = "X";
+  } else if (e.code === "ArrowLeft" && moveDirection !== "Y") {
+    newName = "Y";
+    newValue = -1;
+  } else if (e.code === "ArrowRight" && moveDirection !== "Y") {
+    newName = "Y";
     newValue = 1;
   }
   if (newName !== "" && !checkPause() && moveDirection !== "")
     TIMER.startTimer();
-  newEvent = Object.assign({}, { name: newName, value: newValue });
+  const newEvent = Object.assign({}, { name: newName, value: newValue });
   return newEvent;
 };
 
