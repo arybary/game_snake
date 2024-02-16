@@ -11,11 +11,12 @@ import { getObstaclesXCoord } from "../obstacles/obstaclesX";
 import { getObstaclesYCoord } from "../obstacles/obstaclesY";
 import * as FOOD from "../food/food";
 import { addEvent } from "../protocol/protocol";
+// import { getField } from "../field/fieldPerLevel";
 /**
  * Генерирует координаты X и Y текущей еды, заносит событие в протокол
  */
 function setFoodEvent(): void {
-  let booking: number[][] = [];
+  const booking: number[][] = [];
   if (getCurrentFoodNumber() <= getAmountOfFood()) {
     FOOD.setFoodCoord(
       getFreeCell(
