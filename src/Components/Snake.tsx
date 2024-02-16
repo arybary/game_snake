@@ -4,7 +4,6 @@ import { getField } from "../../engine/field/fieldPerLevel";
 
 const Snake: React.FC = () => {
   const gridSize = getField();
-
   return (
     <group>
       {SNAKE.getSnakeBodyCoord().map((_, index) => (

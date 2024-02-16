@@ -16,8 +16,8 @@ function snakeCatchesFoodEvent(): void {
   const snakeHead = getSnakeHeadParams();
   const foodCoord = getFoodCoord();
   if (
-    snakeHead.snakeHeadCoordX === foodCoord[0] &&
-    snakeHead.snakeHeadCoordY === foodCoord[1]
+    snakeHead.snakeHeadCoordX === foodCoord[1] &&
+    snakeHead.snakeHeadCoordY === foodCoord[0]
   ) {
     if (getDoubleScoresFood())
       addEvent({ name: "bonus doubleScoresFood", value: getFoodScores() * 2 });

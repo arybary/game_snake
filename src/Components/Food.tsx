@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
 import { getFoodCoord } from "../../engine/food/food";
 import { useState, useEffect } from "react";
 import { getField } from "../../engine/field/fieldPerLevel";
 import { Vector3 } from "@react-three/fiber";
+import { getProtocol } from "../../engine/protocol/protocol";
 
 const Food: React.FC = () => {
   const [foodPosition, setFoodPosition] = useState<Vector3>([0, 0, 0]);
@@ -14,8 +16,7 @@ const Food: React.FC = () => {
     const adjustedY = Math.round(updatedPosition[1] - gridSize / 2 - 1);
     const adjustedPosition: Vector3 = [adjustedX, adjustedY, 0];
     setFoodPosition(adjustedPosition);
-  }, []);
-
+  }, [getProtocol().length]);
   return (
     <mesh position={foodPosition}>
       <boxGeometry args={[1, 1, 1]} />
