@@ -14,7 +14,7 @@ import contactSnakeBodyObstacle from "./contactSnakeBodyObstacle";
  * @returns шаг препятствия
  */
 function setObstacleStep(props: obstacleContactProps): number {
-  let { step, i } = props;
+  const { step, i } = props;
   step[i] = contactBorderObstacle(props);
   step[i] = contactFoodObstacle(props);
   step[i] = contactObstacleObstacle(props);

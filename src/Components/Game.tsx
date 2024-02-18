@@ -7,18 +7,37 @@ import Fields from "./Field";
 import Food from "./Food";
 import Snake from "./Snake";
 import moveSnake from "../../engine/snake/moveSnake";
-import snakeCatchesFoodEvent from "../../engine/events/snakeCatchesFoodEvent";
+import { snakeCatchesFoodEvent } from "../../engine/events/snakeCatchesFoodEvent";
+import snakeCatchesBonusEvent from "../../engine/events/snakeCatchesBonusEvent";
+import renderInfo from "../../engine/render/renderInfo";
+import { checkTimerWorking } from "../../engine/time/isTimer";
+import { setTimer } from "../../engine/time/timer";
+import * as INTERRUPT from "../../engine/events/interruptGameEvent";
+import { ObstaclesFix, ObstaclesX, ObstaclesY } from "./Obstacles";
+import setObstacleParams from "../../engine/obstacles/setObstacleParams";
+import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
+import { setBonusParams } from "../../engine/bonuses/bonusParams";
+import Bonuses from "./Bonuses";
+import { getBonuses } from "../../engine/bonuses/bonusesPerLevel";
 
 function Game() {
   const gridSize = getField();
   const { size } = useThree();
+  renderInfo();
   const [previousTime, setPreviousTime] = useState(0);
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     if ((elapsedTime - previousTime) * 1000 > getTimerStep()) {
       /*  Игровые механики  */
-      moveSnake();
-      snakeCatchesFoodEvent();
+      INTERRUPT.interruptGameEvent();
+      if (!INTERRUPT.getInterruptGame()) {
+        setBonusParams();
+        setObstacleParams(500);
+        moveSnake();
+        snakeCatchesFoodEvent();
+        snakeCatchesBonusEvent();
+      }
+      if (checkTimerWorking()) setTimer(getTimerStep());
       /* ------------------- */
       setPreviousTime(elapsedTime);
     }
@@ -34,8 +53,16 @@ function Game() {
       <ambientLight />
       <directionalLight position={[0, 0, 5]} intensity={1} />
       <Fields size={gridSize} />
-      <Food />
+      {getObstacles().length !== 0 && (
+        <>
+          <ObstaclesX />
+          <ObstaclesY />
+          <ObstaclesFix />
+        </>
+      )}
+      {getBonuses().length !== 0 && <Bonuses />}
       <Snake />
+      <Food />
     </>
   );
 }

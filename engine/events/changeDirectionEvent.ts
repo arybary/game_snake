@@ -7,6 +7,7 @@ import * as TIMER from "../time/isTimer";
 import checkTimerStep from "../time/checkTimerStep";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { checkPause } from "./pauseEvent";
+import { getInterruptGame } from "./interruptGameEvent";
 /**
  * Изменяет направление движения змейки при нажатии клавиш со стрелками
  * @param e событие нажатия клавиши на клавиатуре
@@ -22,7 +23,8 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
   let newName = "";
   let newValue = 0;
-  if (checkTimerStep()) return { name: newName, value: newValue };
+  if (checkTimerStep() || getInterruptGame())
+    return { name: newName, value: newValue };
   if (e.code === "ArrowUp" && moveDirection !== "X") {
     newName = "X";
     newValue = 1;

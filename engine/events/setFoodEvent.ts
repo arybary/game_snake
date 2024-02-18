@@ -18,16 +18,16 @@ import { addEvent } from "../protocol/protocol";
 function setFoodEvent(): void {
   const booking: number[][] = [];
   if (getCurrentFoodNumber() <= getAmountOfFood()) {
-    FOOD.setFoodCoord(
-      getFreeCell(
-        booking.concat(
-          getObstaclesFixCoord(),
-          getObstaclesXCoord(),
-          getObstaclesYCoord(),
-          SNAKE.getSnakeBodyCoord()
-        )
+    const [foodX, foodY] = getFreeCell(
+      booking.concat(
+        getObstaclesFixCoord(),
+        getObstaclesXCoord(),
+        getObstaclesYCoord(),
+        SNAKE.getSnakeBodyCoord()
       )
     );
+    FOOD.setFoodCoord([foodY, foodX]);
+
     addEvent({
       name: "set food",
       value: FOOD.getFoodCoord()[0] + ":" + FOOD.getFoodCoord()[1],

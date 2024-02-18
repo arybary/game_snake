@@ -12,9 +12,9 @@ import { newObstacleStep } from "../../types/obstacle";
  * @returns измененный шаг отскочившего препятствия
  */
 function obstacleBounce(props: newObstacleStep): number {
-  let { i, twist, coord, step, cell } = props;
+  const { i, twist, coord, step, cell } = props;
   if (cell) {
-    let [posX, posY] = cell;
+    const [posX, posY] = cell;
     if (
       coord[i][twist[0]] + step[i] === [posX, posY][twist[0]] &&
       coord[i][twist[1]] === [posX, posY][twist[1]]

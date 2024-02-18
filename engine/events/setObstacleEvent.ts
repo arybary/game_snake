@@ -24,7 +24,7 @@ function setObstacleEvent(): void {
   let obstacles: number[][];
   let obstacleX: number, obstacleY: number;
   let obstaclesDirection: string[];
-  booking = [...cellsBookingAroundSnake(3, Math.floor(getField() / 2) - 1)];
+  booking = [...cellsBookingAroundSnake(Math.round(getField() / 2 - 1))];
   ["x", "y", "fix"].forEach((type) => {
     obstaclesDirection = selectionObstacleType(type);
     if (type === "y") booking.concat([...X.getObstaclesXCoord()]);

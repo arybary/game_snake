@@ -8,11 +8,11 @@
  * @param pos Положение змейки на старте уровня
  * @returns массив с координатами зарезервированных ячеек вокруг змейки
  */
-function cellsBookingAroundSnake(side: number, pos: number): number[][] {
-  let booking: number[][] = [];
-  for (let row = 0; row <= side; row++) {
-    for (let col = 0; col <= side; col++) {
-      booking.push([pos + row, pos + col]);
+function cellsBookingAroundSnake(pos: number): number[][] {
+  const booking: number[][] = [];
+  for (let row = 1; row <= 3; row++) {
+    for (let col = 1; col <= 3; col++) {
+      booking.push([pos + row - 1, pos + col - 1]);
     }
   }
 

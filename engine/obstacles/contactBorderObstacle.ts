@@ -14,7 +14,7 @@ import { getField } from "../field/fieldPerLevel";
  * @return измененный шаг препятствия, коснувшегося края поля
  */
 function contactBorderObstacle(props: obstacleContactProps): number {
-  let { i, twist, coord, step } = props;
+  const { i, twist, coord, step } = props;
   if (coord[i][twist[0]] === 1) step[i] = 1;
   if (coord[i][twist[0]] === getField()) step[i] = -1;
 
