@@ -9,6 +9,7 @@ import { addEvent, getProtocol } from "./protocol";
 import setLevelEvent from "../events/setLevelEvent";
 import { getScores } from "../scores/scores";
 import { getMaxScores } from "../scores/maxScoresPerLevel";
+import { setBonuses } from "../bonuses/bonusesPerLevel";
 /**
  * Отрабатывает успешное завершение текущего уровня игры
  * @description
@@ -33,6 +34,7 @@ function levelComplete(): void {
         LEVEL.getCurrentLevel() - 1
       } is complete! Congratulation! Well done! It's time to Level ${LEVEL.getCurrentLevel()}`
     );
+    setBonuses([]);
     setLevelEvent(LEVEL.getCurrentLevel());
   }
 }

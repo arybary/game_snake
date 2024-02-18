@@ -3,14 +3,8 @@
  *     @function bonus Для каждого вида действующего бонуса меняет настройки игры
  */
 import { getBonusParams } from "../bonuses/bonusParams";
-import {
-  getBonusAvailability,
-  removeBonus,
-} from "../bonuses/bonusAvailableState";
-import {
-  catchBonus,
-  getBonusCatchingStatus,
-} from "../bonuses/bonusCatchingState";
+import { removeBonus } from "../bonuses/bonusAvailableState";
+import { catchBonus } from "../bonuses/bonusCatchingState";
 import * as STOP from "../bonuses/bonusSnakeStopsGrowing";
 import * as BREAK from "../bonuses/bonusSnakeBreaksObstacles";
 import * as CROSS from "../bonuses/bonusSnakeCrossesBorders";
@@ -18,7 +12,7 @@ import * as DOUBLE from "../bonuses/bonusDoubleScoresFood";
 import * as TIME from "../time/timePerLevel";
 import { setLives } from "../lives/lives";
 import { setScores } from "../scores/scores";
-import { bonusAddTime, bonusAddTimeDeactivate } from "../bonuses/bonusAddTime";
+import { bonusAddTime } from "../bonuses/bonusAddTime";
 import { bonusAddLives } from "../bonuses/bonusAddLives";
 import { bonusAddScores } from "../bonuses/bonusAddScores";
 /**

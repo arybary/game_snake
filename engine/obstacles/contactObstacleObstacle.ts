@@ -14,7 +14,7 @@ import obstacleBounce from "./obstacleBounce";
  * @returns измененный шаг препятствия, коснувшегося другого препятствия
  */
 function contactObstacleObstacle(props: obstacleContactProps): number {
-  let { i, step } = props;
+  const { i, step } = props;
   getObstaclesFixCoord().forEach(
     (pos) => (step[i] = obstacleBounce({ ...props, cell: pos }))
   );

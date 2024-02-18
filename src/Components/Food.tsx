@@ -4,11 +4,11 @@ import { getFoodCoord } from "../../engine/food/food";
 import { useState, useEffect } from "react";
 import { getField } from "../../engine/field/fieldPerLevel";
 import { Vector3 } from "@react-three/fiber";
-import { getProtocol } from "../../engine/protocol/protocol";
+import { getFoodEaten } from "../../engine/events/snakeCatchesFoodEvent";
+import { howMuchIsLeftToEat } from "../../engine/food/currentFoodNumber";
 
 const Food: React.FC = () => {
   const [foodPosition, setFoodPosition] = useState<Vector3>([0, 0, 0]);
-
   useEffect(() => {
     const updatedPosition = getFoodCoord();
     const gridSize = getField();
@@ -16,12 +16,16 @@ const Food: React.FC = () => {
     const adjustedY = Math.round(updatedPosition[1] - gridSize / 2 - 1);
     const adjustedPosition: Vector3 = [adjustedX, adjustedY, 0];
     setFoodPosition(adjustedPosition);
-  }, [getProtocol().length]);
+  }, [getFoodEaten()]);
   return (
-    <mesh position={foodPosition}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="blue" />
-    </mesh>
+    <>
+      {howMuchIsLeftToEat() !== 0 && (
+        <mesh position={foodPosition}>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshStandardMaterial color="blue" />
+        </mesh>
+      )}
+    </>
   );
 };
 

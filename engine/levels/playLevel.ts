@@ -4,7 +4,7 @@
  */
 import { setBonusParams } from "../bonuses/bonusParams";
 import snakeCatchesBonusEvent from "../events/snakeCatchesBonusEvent";
-import snakeCatchesFoodEvent from "../events/snakeCatchesFoodEvent";
+import { snakeCatchesFoodEvent } from "../events/snakeCatchesFoodEvent";
 import setObstacleParams from "../obstacles/setObstacleParams";
 import moveSnake from "../snake/moveSnake";
 /**

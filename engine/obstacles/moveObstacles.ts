@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /**
  * @module moveObstacles.ts Перемещает препятствия по игровому полю
  *    @function moveObstacles Управляет движением среди других объектов на поле
@@ -29,7 +30,7 @@ function moveObstacles(type: string): void {
   coord = [...selectObstacleDirection(type).coord];
   step = [...selectObstacleDirection(type).step];
   if (checkTimerWorking()) {
-    twist = type === "x" ? [0, 1] : [1, 0];
+    twist = type === "y" ? [0, 1] : [1, 0];
     for (let i = 0; i < coord.length; i++) {
       newPos = [...coord[i]];
       step[i] = setObstacleStep({ i, twist, coord, step });

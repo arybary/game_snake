@@ -16,7 +16,7 @@ const Snake: React.FC = () => {
           ]}
         >
           <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color={index === 0 ? "red" : "yellow"} />
+          <meshStandardMaterial color={index === 0 ? "red" : "white"} />
         </mesh>
       ))}
     </group>

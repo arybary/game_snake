@@ -11,8 +11,11 @@ import obstacleBounce from "./obstacleBounce";
  * @returns измененный шаг отскочившего препятствия
  */
 function contactFoodObstacle(props: obstacleContactProps): number {
-  let { i, step } = props;
-  step[i] = obstacleBounce({ ...props, cell: getFoodCoord() });
+  const { i, step } = props;
+  step[i] = obstacleBounce({
+    ...props,
+    cell: [getFoodCoord()[1], getFoodCoord()[0]],
+  });
 
   return step[i];
 }
