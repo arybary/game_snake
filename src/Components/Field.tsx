@@ -9,7 +9,6 @@ interface FieldsProps {
 const Fields: React.FC<FieldsProps> = ({ size }) => {
   const texture = useTexture(floorTexture);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  console.log({ size });
 
   return (
     <group>

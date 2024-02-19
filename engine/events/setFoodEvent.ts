@@ -11,22 +11,23 @@ import { getObstaclesXCoord } from "../obstacles/obstaclesX";
 import { getObstaclesYCoord } from "../obstacles/obstaclesY";
 import * as FOOD from "../food/food";
 import { addEvent } from "../protocol/protocol";
+// import { getField } from "../field/fieldPerLevel";
 /**
  * Генерирует координаты X и Y текущей еды, заносит событие в протокол
  */
 function setFoodEvent(): void {
-  let booking: number[][] = [];
+  const booking: number[][] = [];
   if (getCurrentFoodNumber() <= getAmountOfFood()) {
-    FOOD.setFoodCoord(
-      getFreeCell(
-        booking.concat(
-          getObstaclesFixCoord(),
-          getObstaclesXCoord(),
-          getObstaclesYCoord(),
-          SNAKE.getSnakeBodyCoord()
-        )
+    const [foodX, foodY] = getFreeCell(
+      booking.concat(
+        getObstaclesFixCoord(),
+        getObstaclesXCoord(),
+        getObstaclesYCoord(),
+        SNAKE.getSnakeBodyCoord()
       )
     );
+    FOOD.setFoodCoord([foodY, foodX]);
+
     addEvent({
       name: "set food",
       value: FOOD.getFoodCoord()[0] + ":" + FOOD.getFoodCoord()[1],

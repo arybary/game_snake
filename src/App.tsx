@@ -6,7 +6,7 @@ function App() {
   return (
     <Wrapper>
       <Canvas>
-        <Game start={1} />
+        <Game />
       </Canvas>
     </Wrapper>
   );
