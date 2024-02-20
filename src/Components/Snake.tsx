@@ -1,12 +1,12 @@
 import React from "react";
-import * as SNAKE from "../../engine/snake/snake";
-import { getField } from "../../engine/field/fieldPerLevel";
+import * as SNAKE from "./../engine/snake/snake";
+import { getField } from "./../engine/field/fieldPerLevel";
 
 const Snake: React.FC = () => {
   const gridSize = getField();
   return (
     <group>
-      {SNAKE.getSnakeBodyCoord().map((_, index) => (
+      {SNAKE.getSnakeBodyCoord().map((_: unknown, index: number) => (
         <mesh
           key={index}
           position={[

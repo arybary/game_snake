@@ -1,24 +1,27 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { OrthographicCamera } from "@react-three/drei";
+import {
+  //  OrbitControls,
+  OrthographicCamera,
+} from "@react-three/drei";
 import { useState } from "react";
-import { getTimerStep } from "../../engine/time/timerStepPerLevel";
-import { getField } from "../../engine/field/fieldPerLevel";
+import { getTimerStep } from "./../engine/time/timerStepPerLevel";
+import { getField } from "./../engine/field/fieldPerLevel";
 import Fields from "./Field";
 import Food from "./Food";
 import Snake from "./Snake";
-import moveSnake from "../../engine/snake/moveSnake";
-import { snakeCatchesFoodEvent } from "../../engine/events/snakeCatchesFoodEvent";
-import snakeCatchesBonusEvent from "../../engine/events/snakeCatchesBonusEvent";
-import renderInfo from "../../engine/render/renderInfo";
-import { checkTimerWorking } from "../../engine/time/isTimer";
-import { setTimer } from "../../engine/time/timer";
-import * as INTERRUPT from "../../engine/events/interruptGameEvent";
+import moveSnake from "./../engine/snake/moveSnake";
+import { snakeCatchesFoodEvent } from "./../engine/events/snakeCatchesFoodEvent";
+import snakeCatchesBonusEvent from "./../engine/events/snakeCatchesBonusEvent";
+import renderInfo from "./../engine/render/renderInfo";
+import { checkTimerWorking } from "./../engine/time/isTimer";
+import { setTimer } from "./../engine/time/timer";
+import * as INTERRUPT from "./../engine/events/interruptGameEvent";
 import { ObstaclesFix, ObstaclesX, ObstaclesY } from "./Obstacles";
-import setObstacleParams from "../../engine/obstacles/setObstacleParams";
-import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
-import { setBonusParams } from "../../engine/bonuses/bonusParams";
+import setObstacleParams from "./../engine/obstacles/setObstacleParams";
+import { getObstacles } from "./../engine/obstacles/obstaclesPerLevel";
+import { setBonusParams } from "./../engine/bonuses/bonusParams";
 import Bonuses from "./Bonuses";
-import { getBonuses } from "../../engine/bonuses/bonusesPerLevel";
+import { getBonuses } from "./../engine/bonuses/bonusesPerLevel";
 
 function Game() {
   const gridSize = getField();
@@ -45,6 +48,7 @@ function Game() {
 
   return (
     <>
+      {/* <OrbitControls /> */}
       <OrthographicCamera
         makeDefault
         position={[0, 0, 10]}
