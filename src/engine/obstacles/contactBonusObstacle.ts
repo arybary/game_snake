@@ -4,6 +4,7 @@
  */
 import { obstacleContactProps } from "../../types/obstacle";
 import { getBonusCoord } from "../bonuses/bonus";
+import { getBonusCatchingStatus } from "../bonuses/bonusCatchingState";
 import obstacleBounce from "./obstacleBounce";
 /**
  * При контакте препятствий с бонусом меняет направление их движения
@@ -12,8 +13,9 @@ import obstacleBounce from "./obstacleBounce";
  * @returns измененный шаг препятствия, коснувшегося бонуса
  */
 function contactBonusObstacle(props: obstacleContactProps): number {
-  let { i, step } = props;
-  step[i] = obstacleBounce({ ...props, cell: getBonusCoord() });
+  const { i, step } = props;
+  if (!getBonusCatchingStatus().isBonusCaught)
+    step[i] = obstacleBounce({ ...props, cell: getBonusCoord() });
 
   return step[i];
 }
