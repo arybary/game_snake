@@ -9,7 +9,7 @@ import { getCurrentFoodNumber } from "../food/currentFoodNumber";
 /**
  * @var Касание змейки с бонусом, факт касания (true/false) и номер еды
  */
-let bonusCatchingState: BonusCatchingState = {
+const bonusCatchingState: BonusCatchingState = {
   isBonusCaught: false,
   caughtFoodNumber: -1,
 };

@@ -3,7 +3,7 @@
  *    @function contactSnakeBodyObstacle Изменяет направление движение препятствий
  */
 import { obstacleContactProps } from "../../types/obstacle";
-import isContact from "../events/isContact";
+// import isContact from "../events/isContact";
 import * as SNAKE from "../snake/snake";
 import obstacleBounce from "./obstacleBounce";
 /**
@@ -13,8 +13,8 @@ import obstacleBounce from "./obstacleBounce";
  * @returns измененный шаг препятствия, коснувшегося тела змейки
  */
 function contactSnakeBodyObstacle(props: obstacleContactProps): number {
-  let { i, step } = props;
-  const currentStep = step[i];
+  const { i, step }: { i: number; step: number[] } = props;
+  // const currentStep = step[i];
   SNAKE.getSnakeBodyCoord().forEach((pos) => {
     step[i] = obstacleBounce({ ...props, cell: pos });
   });

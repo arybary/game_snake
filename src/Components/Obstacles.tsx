@@ -2,11 +2,11 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Vector3 } from "@react-three/fiber";
-import { getObstaclesFixCoord } from "../../engine/obstacles/obstaclesFix";
-import { getField } from "../../engine/field/fieldPerLevel";
-import { getObstaclesXCoord } from "../../engine/obstacles/obstaclesX";
-import { getTimer } from "../../engine/time/timer";
-import { getObstaclesYCoord } from "../../engine/obstacles/obstaclesY";
+import { getObstaclesFixCoord } from "./../engine/obstacles/obstaclesFix";
+import { getField } from "./../engine/field/fieldPerLevel";
+import { getObstaclesXCoord } from "./../engine/obstacles/obstaclesX";
+import { getTimer } from "./../engine/time/timer";
+import { getObstaclesYCoord } from "./../engine/obstacles/obstaclesY";
 
 export const ObstaclesFix: React.FC = () => {
   const gridSize = getField();

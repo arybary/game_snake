@@ -28,7 +28,7 @@ let obstaclesStepY: number[] = [];
  */
 export function setObstaclesY(): void {
   obstaclesY = getObstacles().filter((obstacle) => obstacle === "y");
-  obstaclesStepY = obstaclesY.map((obstacle) => (Math.random() < 0.5 ? 1 : -1));
+  obstaclesStepY = obstaclesY.map(() => (Math.random() < 0.5 ? 1 : -1));
 }
 /**
  * Заносит массив координат [x, y] препятствий в obstaclesYCoord

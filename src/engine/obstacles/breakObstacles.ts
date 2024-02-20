@@ -17,14 +17,14 @@ function breakObstacles(coord: number[]): void {
     )
   );
   X.setObstaclesXCoord(
-    X.getObstaclesXCoord().filter((coord, index) => {
+    X.getObstaclesXCoord().filter((coord) => {
       if (coord[0] !== coordX || coord[1] !== coordY) {
         return true;
       }
     })
   );
   Y.setObstaclesYCoord(
-    Y.getObstaclesYCoord().filter((coord, index) => {
+    Y.getObstaclesYCoord().filter((coord) => {
       if (coord[0] !== coordX || coord[1] !== coordY) {
         return true;
       }

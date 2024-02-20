@@ -5,7 +5,6 @@
  *    @function obstacleSpeedCounter Суммирует интервалы рендера
  *    @function getObstacleSpeed Возвращает суммарный интервал
  */
-import { getStep, getTimerStep } from "../time/timerStepPerLevel";
 /**
  * @var миллисекунды, кратные timerStepPerLevel, когда препятствие стоит
  */
