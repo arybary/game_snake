@@ -12,6 +12,7 @@ import { getTimer } from "../time/timer";
 import protocolExecutor from "../protocol/protocolExecutor";
 import { howMuchIsLeftToEat } from "../food/currentFoodNumber";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
+
 /**
  * Следит за нажатием клавиш со стрелками, Ctrl, Shift и Space
  * @param e событие нажатия клавиши на клавиатуре
