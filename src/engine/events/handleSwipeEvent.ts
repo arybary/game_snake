@@ -5,13 +5,13 @@ import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { checkPause } from "./pauseEvent";
 import { getInterruptGame } from "./interruptGameEvent";
 import protocolExecutor from "../protocol/protocolExecutor";
+import { TouchEventHandler } from "react";
 
 let x1: number | null = null;
 let y1: number | null = null;
 
-const handleSwipeEvent = (e: TouchEvent): Event => {
+const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
   const moveDirection = findLastMoveDirection();
-  // console.log();
 
   // document.addEventListener("touchstart", handleTouchStart, false);
   // document.addEventListener("touchmove", handleTouchMove, false);
@@ -65,12 +65,6 @@ const handleSwipeEvent = (e: TouchEvent): Event => {
     x1 = null;
     y1 = null;
   }
-  // console.log(e);
-  // console.log(x1, y1);
-
-  // console.log(x2, y2);
-
-  // console.log(x2, y2);
 
   if (newName !== "" && !checkPause() && moveDirection !== "") {
     TIMER.startTimer();
