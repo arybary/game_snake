@@ -12,11 +12,26 @@ import keyboardEvents from "./engine/events/keyboardEvents.ts";
 setLevelEvent(1);
 // document.addEventListener("keydown", changeDirectionEvent);
 document.addEventListener("keydown", keyboardEvents);
-
 // document.addEventListener("touchstart", swipe);
 // const gameElement = document.getElementById("root");
 // const playGround = document.querySelector("#root");
-// console.log(gameElement);
+let lastY = 1;
+document.addEventListener(
+  "touchmove",
+  function (event) {
+    const lastS = document.documentElement.scrollTop;
+    if (
+      lastS == 0 &&
+      lastY - event.touches[0].clientY < 0 &&
+      event.cancelable
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    lastY = event.touches[0].clientY;
+  },
+  { passive: false }
+);
 // if (playGround) {
 // document.addEventListener("touchstart", handleSwipeEvent);
 // document.addEventListener("touchmove", handleSwipeEvent);
