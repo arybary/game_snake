@@ -5,101 +5,85 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
 }
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #e3f2fd;
-}
 .wrapper {
-  width: 65vmin;
-  height: 70vmin;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: start;
   overflow: hidden;
   border-radius: 5px;
   background: #293447;
 }
 .game-details {
   color: #b8c6dc;
-  font-size: 1.2rem;
+  font-size: 3.2vmin;
   font-weight: 500;
-  padding: 20px 10px;
+  padding: 2vmin 1vmin;
+  width: 95vmin;
   display: flex;
   justify-content: space-between;
 }
-.play-board {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  /* grid-template: repeat(30, 1fr) / repeat(30, 1fr); */
-  background: #212837;
+.game-details + div {
+  height: 100vh !important;
 }
-.play-board .food {
-  background: #ff003d;
-}
-.play-board .obstacleFix {
-  background: orange;
-}
-.play-board .obstacleX {
-  background: darkgoldenrod;
-}
-.play-board .obstacleY {
-  background: goldenrod;
-}
-.play-board .bonus-snakeStopsGrowing {
-  background: green;
-}
-.play-board .bonus-snakeBreaksObstacles {
-  background: darkgreen;
-}
-.play-board .bonus-snakeCrossesBorders {
-  background: lime;
-}
-.play-board .bonus-addExtraTime {
-  background: greenyellow;
-}
-.play-board .bonus-addExtraLives {
-  background: darkolivegreen;
-}
-.play-board .bonus-addExtraScores {
-  background: olive;
-}
-.play-board .bonus-doubleScoresFood {
-  background: yellowgreen;
-}
-.play-board .head {
-  background: #60cbff;
-}
-.controls {
-  display: none;
-  justify-content: space-between;
-}
-.controls i {
-  padding: 25px 0;
-  color: #b8c6dc;
-  text-align: center;
-  cursor: pointer;
-  font-size: 1.3rem;
-  width: calc(100% / 4);
-  border-right: 1px solid #171b26;
-}
-
-@media screen and (max-width: 800px) {
-  .wrapper {
-    width: 90vmin;
-    height: 115vmin;
+@media screen and (min-width: 600px), (min-height: 1200px) {
+  .game-details + div {
+    width: 85vw !important;
   }
-  .game-details {
-    font-size: 1rem;
-    padding: 15px 5px;
+}
+@media screen and (min-width: 700px), (min-height: 300px) {
+  /* iPhone SE -,   */
+  .game-details + div {
+    width: 85vw !important;
   }
-  .controls {
-    display: flex;
+}
+@media screen and (min-width: 800px), (min-height: 400px) {
+  /* iPhone 12 -,  */
+  .game-details + div {
+    width: 80vw !important;
   }
-  .controls i {
-    padding: 15px 0;
-    font-size: 1rem;
+}
+@media screen and (min-width: 900px), (min-height: 300px) {
+  /* iPhone XR -, Galaxy S8 -, */
+  .game-details + div {
+    width: 85vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 400px) {
+  /* iPhone XR -,  */
+  .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 600px) {
+  /* iPhone SE |, iPhone XR |, iPhone 12 |, Galaxy S8 |,  */
+  .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 1100px) {
+  /* iPhone 14 -, Pixel 7 -, Galaxy S20 -, */
+  .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 1000px), (min-height: 1400px) {
+  /* iPad Pro |,  */
+  .game-details + div {
+    width: 30vw !important;
+  }
+}
+@media screen and (min-width: 1000px), (min-height: 600px) {
+  /* iPad Pro |,  */
+  .game-details + div {
+    width: 100vw !important;
+  }
+}
+@media screen and (min-width: 1300px), (min-height: 900px) {
+  /* iPhone 14 |, Pixel 7 |, Galaxy S20 |, iPad Mini |, iPad Air |,  */
+  .game-details + div {
+    width: 75vw !important;
   }
 }
