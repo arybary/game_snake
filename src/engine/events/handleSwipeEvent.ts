@@ -12,7 +12,7 @@ let y1: number | null = null;
 
 const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
   const moveDirection = findLastMoveDirection();
-
+  // e.preventDefault();
   // document.addEventListener("touchstart", handleTouchStart, false);
   // document.addEventListener("touchmove", handleTouchMove, false);
 

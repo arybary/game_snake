@@ -13,12 +13,15 @@ function Wrapper({ children }: { children: ReactNode }) {
   //   }
   // }, []);
 
+  const handleTouch = (e: React.TouchEvent<HTMLDivElement>) => {
+    handleSwipeEvent(e); // Вызываем пользовательскую функцию обработки свайпа
+  };
+
   return (
     <div
       className="wrapper"
-      onTouchStart={(e) => handleSwipeEvent(e)}
-      onTouchMove={(e) => handleSwipeEvent(e)}
-      //  ref={wrapperRef}
+      onTouchStart={handleTouch}
+      onTouchMove={handleTouch}
     >
       <GameDetails />
       {children}
