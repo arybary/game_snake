@@ -21,6 +21,8 @@ import { getInterruptGame } from "./interruptGameEvent";
  */
 const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
+  // console.log(e);
+
   let newName = "";
   let newValue = 0;
   if (checkTimerStep() || getInterruptGame())
@@ -28,19 +30,25 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   if (e.code === "ArrowUp" && moveDirection !== "X") {
     newName = "X";
     newValue = 1;
+    // console.log("ArrowUp", moveDirection);
   } else if (e.code === "ArrowDown" && moveDirection !== "X") {
     newName = "X";
     newValue = -1;
+    // console.log("ArrowDown", moveDirection);
   } else if (e.code === "ArrowLeft" && moveDirection !== "Y") {
     newName = "Y";
     newValue = -1;
+    // console.log("ArrowLeft", moveDirection);
   } else if (e.code === "ArrowRight" && moveDirection !== "Y") {
     newName = "Y";
     newValue = 1;
+    // console.log("ArrowRight", moveDirection);
   }
   if (newName !== "" && !checkPause() && moveDirection !== "")
     TIMER.startTimer();
   const newEvent = Object.assign({}, { name: newName, value: newValue });
+  console.log(newEvent);
+
   return newEvent;
 };
 
