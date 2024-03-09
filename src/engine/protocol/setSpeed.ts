@@ -26,7 +26,7 @@ let snakeHeadSteps: number[];
  *  - позволяет изменение минимальной скорости игры только на 1
  */
 function setSpeed(speed: number) {
-  let currentTimeStep = TIMER.getStep();
+  const currentTimeStep = TIMER.getStep();
   obstacleSpeedReset();
   if (currentTimeStep > 0 && currentTimeStep < 5)
     TIMER.setTimerStep(
