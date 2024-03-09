@@ -12,15 +12,6 @@ let y1: number | null = null;
 
 const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
   const moveDirection = findLastMoveDirection();
-  // e.preventDefault();
-  // document.addEventListener("touchstart", handleTouchStart, false);
-  // document.addEventListener("touchmove", handleTouchMove, false);
-
-  // const logBlock = document.getElementById("root");
-
-  // let xDiff: number; // Объявление переменной xDiff
-  // let yDiff: number; // Объявление переменной yDiff
-
   let newName = "";
   let newValue = 0;
   if (checkTimerStep() || getInterruptGame())
@@ -29,7 +20,6 @@ const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
     const firstTouch = e.touches[0];
     x1 = firstTouch.clientX;
     y1 = firstTouch.clientY;
-    console.log("Tahyusha", x1, y1);
   } else if (e.type === "touchmove") {
     const x2 = e.touches[0].clientX;
     const y2 = e.touches[0].clientY;
@@ -38,27 +28,21 @@ const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
       const xDiff = x2 - x1;
       const yDiff = y2 - y1;
 
-      // console.log("Sashunia", x1, y1, xDiff, yDiff);
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0 && moveDirection !== "Y") {
           newName = "Y";
           newValue = 1;
-
-          console.log("right", moveDirection, xDiff);
         } else if (xDiff < 0 && moveDirection !== "Y") {
           newName = "Y";
           newValue = -1;
-          console.log("left", moveDirection);
         }
       } else {
         if (yDiff > 0 && moveDirection !== "X") {
           newName = "X";
           newValue = -1;
-          console.log("down", moveDirection);
         } else if (yDiff < 0 && moveDirection !== "X") {
           newName = "X";
           newValue = 1;
-          // console.log("up", moveDirection);
         }
       }
     }
@@ -71,7 +55,6 @@ const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
   }
 
   const newEvent = Object.assign({}, { name: newName, value: newValue });
-  console.log(newEvent);
   protocolExecutor(newEvent);
 
   return newEvent;
