@@ -3,7 +3,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useSpring } from "@react-spring/three";
-import { useDrag } from "@use-gesture/react";
 import { useCursor } from "@react-three/drei";
 import { Vector3, useThree } from "@react-three/fiber";
 import { getField } from "../engine/field/fieldPerLevel";
