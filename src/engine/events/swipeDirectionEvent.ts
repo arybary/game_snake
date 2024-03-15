@@ -31,11 +31,7 @@ const swipeDirectionEvent = (): Event => {
       newEvent.value = -1;
     }
   }
-  if (newEvent.name !== "") {
-    TIMER.startTimer();
-
-    console.log(newEvent);
-  }
+  if (newEvent.name !== "") TIMER.startTimer();
 
   return newEvent;
 };
