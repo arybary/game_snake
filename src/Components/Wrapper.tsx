@@ -13,7 +13,6 @@ function Wrapper({ children }: { children: ReactNode }) {
       className="wrapper"
       onTouchStart={handleTouch}
       onTouchEnd={handleTouch}
-      onTouchMove={handleTouch}
     >
       <GameDetails />
       {children}

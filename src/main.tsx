@@ -15,24 +15,24 @@ document.addEventListener("keydown", keyboardEvents);
 // document.addEventListener("touchstart", swipe);
 // const gameElement = document.getElementById("root");
 // const playGround = document.querySelector("#root");
-// let lastY = 1;
+let lastY = 1;
 
-// document.addEventListener(
-//   "touchmove",
-//   function (event) {
-//     const lastS = document.documentElement.scrollTop;
-//     if (
-//       lastS == 0 &&
-//       lastY - event.touches[0].clientY < 0 &&
-//       event.cancelable
-//     ) {
-//       event.preventDefault();
-//       event.stopPropagation();
-//     }
-//     lastY = event.touches[0].clientY;
-//   },
-//   { passive: false }
-// );
+document.addEventListener(
+  "touchmove",
+  function (event) {
+    const lastS = document.documentElement.scrollTop;
+    if (
+      lastS == 0 &&
+      lastY - event.touches[0].clientY < 0 &&
+      event.cancelable
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    lastY = event.touches[0].clientY;
+  },
+  { passive: false }
+);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

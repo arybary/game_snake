@@ -7,8 +7,6 @@ import { getInterruptGame } from "./interruptGameEvent";
 import { TouchEventHandler } from "react";
 import { Touch } from "../../types/controls";
 
-let lastY = 1;
-
 export const screenStart: TouchEventHandler<HTMLDivElement> = (e): Event => {
   const touches = e.changedTouches;
   const newEvent: Event = {
@@ -27,15 +25,6 @@ export const screenEnd: TouchEventHandler<HTMLDivElement> = (e): Event => {
   };
   console.log(touches);
   return newEvent;
-};
-
-export const screenMove: TouchEventHandler<HTMLDivElement> = (e) => {
-  const lastS = document.documentElement.scrollTop;
-  if (lastS == 0 && lastY - e.touches[0].clientY < 0 && e.cancelable) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  lastY = e.touches[0].clientY;
 };
 
 const handleSwipeEvent: TouchEventHandler<HTMLDivElement> = (e): Event => {
