@@ -8,7 +8,6 @@ import keyboardEvents from "./engine/events/keyboardEvents.ts";
 setLevelEvent(1);
 document.addEventListener("keydown", keyboardEvents);
 let lastY = 1;
-
 document.addEventListener(
   "touchmove",
   function (event) {
