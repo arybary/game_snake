@@ -3,11 +3,7 @@
  *    @function game Настройка уровня и запуск игры
  */
 import setLevelEvent from "../events/setLevelEvent";
-// import keyboardEvents from "../events/keyboardEvents";
 import setLoop from "../time/setLoop";
-// import Hammer from "hammerjs";
-// import swipeEvent from "../events/swipeEvent";
-// import handleSwipeEvent from "../events/handleSwipeEvent";
 /**
  * Запуск игры
  * @param start - уровень, с которого начинается игра
@@ -19,11 +15,6 @@ import setLoop from "../time/setLoop";
 function game(start: number): void {
   setLevelEvent(start);
   setLoop();
-
-  // document.addEventListener("keydown", keyboardEvents);
-  // document.addEventListener("touchstart", handleSwipeEvent);
-  // document.addEventListener("touchmove", handleSwipeEvent);
-  // document.addEventListener("touchend", handleSwipeEvent);
 }
 
 export default game;

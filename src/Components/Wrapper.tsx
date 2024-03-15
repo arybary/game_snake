@@ -4,15 +4,6 @@ import GameDetails from "./GameDetails";
 import handleSwipeEvent from "../engine/events/handleSwipeEvent";
 
 function Wrapper({ children }: { children: ReactNode }) {
-  // const wrapperRef = useRef(null);
-
-  // useEffect(() => {
-  //   if (wrapperRef.current) {
-  //     // Ваш код обработки
-  //     console.log(wrapperRef.current);
-  //   }
-  // }, []);
-
   const handleTouch = (e: React.TouchEvent<HTMLDivElement>) => {
     handleSwipeEvent(e); // Вызываем пользовательскую функцию обработки свайпа
   };
@@ -21,6 +12,7 @@ function Wrapper({ children }: { children: ReactNode }) {
     <div
       className="wrapper"
       onTouchStart={handleTouch}
+      onTouchEnd={handleTouch}
       onTouchMove={handleTouch}
     >
       <GameDetails />

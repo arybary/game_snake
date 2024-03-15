@@ -19,8 +19,8 @@ import { getObstacles } from "./../engine/obstacles/obstaclesPerLevel";
 import { setBonusParams } from "./../engine/bonuses/bonusParams";
 import Bonuses from "./Bonuses";
 import { getBonuses } from "./../engine/bonuses/bonusesPerLevel";
-import ControlPanel from "./ControlPanel";
-import ControlBall from "./ControlBall";
+// import ControlPanel from "./ControlPanel";
+// import ControlBall from "./ControlBall";
 
 function Game() {
   const gridSize = getField();
@@ -63,8 +63,6 @@ function Game() {
       {getBonuses().length !== 0 && <Bonuses />}
       <Snake />
       <Food />
-      <ControlPanel />
-      <ControlBall />
     </>
   );
 }
