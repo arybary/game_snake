@@ -31,6 +31,16 @@ body {
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 800px) {
+  .wrapper {
+    width: 90vmin;
+    height: 115vmin;
+  }
+  .game-details {
+    font-size: 1rem;
+    padding: 15px 5px;
+  }
+}
 /****************************************************************************************/
 /* * {
   margin: 0;
