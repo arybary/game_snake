@@ -4,7 +4,7 @@
  */
 import * as RENDER from "../render/isRender";
 import changeDirectionEvent from "./changeDirectionEvent";
-import { checkPause, pauseEvent } from "./pauseEvent";
+import { checkPause, keyboardPauseEvent } from "./pauseEvent";
 import * as TIMER from "../time/isTimer";
 import speedEvent from "./speedEvent";
 import { checkMistake } from "../lives/isMistake";
@@ -20,7 +20,7 @@ import findLastMoveDirection from "../protocol/findLastMoveDirection";
 function keyboardEvents(e: KeyboardEvent) {
   const newDirection = changeDirectionEvent(e);
   const newSpeed = speedEvent(e);
-  const pause = findLastMoveDirection() !== "" ? pauseEvent(e) : false;
+  const pause = findLastMoveDirection() !== "" ? keyboardPauseEvent(e) : false;
 
   if (!pause && newDirection.name !== "") TIMER.startTimer();
   if (

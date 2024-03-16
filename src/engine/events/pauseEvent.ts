@@ -1,8 +1,9 @@
 /**
  *  @module pauseEvent.ts Управляет остановкой игры на паузу
  *     @var isPause Фиксирует остановку игры на паузу и прерывание паузы
- *     @function pauseEvent Отрабатывает нажатие клавиши "Space"
  *     @function checkPause Возвращает состояние игры
+ *     @function swapPause Изменяет указатель паузы "isPause" на обратный
+ *     @function pauseEvent Отрабатывает нажатие клавиши "Space" *
  */
 import { stopTimer } from "../time/isTimer";
 /**
@@ -17,15 +18,29 @@ export function checkPause(): boolean {
   return isPause;
 }
 /**
- * При нажатии клавиши "Space" возвращает true для остановки игры на паузу
+ * Изменяет boolean-значение "isPause" на противоположное
+ */
+export function swapPause() {
+  isPause = !isPause;
+}
+/**
+ * При нажатии клавиши "Space" изменяет режим игры на паузу и обратно
  * @param e событие нажатия клавиши
  * @returns true если игра останавливается на паузу  и false если нет
  */
-export function pauseEvent(e: KeyboardEvent): boolean {
+export function keyboardPauseEvent(e: KeyboardEvent): boolean {
   if (e.code === "Space") {
-    isPause = !isPause;
+    swapPause();
     stopTimer();
   }
 
   return isPause;
+}
+/**
+ * При одиночном касании экрана изменяет режим игры на паузу и обратно
+ * @return true если игра останавливается на паузу  и false если нет
+ */
+export function touchPauseEvent() {
+  swapPause();
+  stopTimer();
 }
