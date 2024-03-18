@@ -33,6 +33,10 @@ const swipeDirectionEvent = (): Event => {
         newEvent.value = -1;
       }
     }
+    if (!TIMER.checkTimerWorking() && !checkPause()) {
+      TIMER.startTimer();
+      return newEvent;
+    }
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       const snakeStep = getSnakeHeadParams().snakeHeadStepX;
       if (yDiff > 0 && moveDirection === "X") {
