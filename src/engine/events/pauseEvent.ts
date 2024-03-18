@@ -3,7 +3,8 @@
  *     @var isPause Фиксирует остановку игры на паузу и прерывание паузы
  *     @function checkPause Возвращает состояние игры
  *     @function swapPause Изменяет указатель паузы "isPause" на обратный
- *     @function pauseEvent Отрабатывает нажатие клавиши "Space" *
+ *     @function keyboardPauseEvent Отрабатывает нажатие клавиши "Space"
+ *     @function touchPauseEvent Отрабатывает касание экрана
  */
 import { stopTimer } from "../time/isTimer";
 /**

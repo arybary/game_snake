@@ -3,7 +3,7 @@ import * as TIMER from "../time/isTimer";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { getInterruptGame } from "./interruptGameEvent";
 import { getTouch } from "./touchEvent";
-import { touchPauseEvent } from "./pauseEvent";
+import { checkPause, touchPauseEvent } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
 
 const swipeDirectionEvent = (): Event => {
@@ -37,10 +37,10 @@ const swipeDirectionEvent = (): Event => {
       const snakeStep = getSnakeHeadParams().snakeHeadStepX;
       if (yDiff > 0 && moveDirection === "X") {
         newEvent.name = "X";
-        newEvent.value = snakeStep === -1 ? "+" : "-";
+        newEvent.value = snakeStep !== 1 ? "+" : "-";
       } else if (yDiff < 0 && moveDirection === "X") {
         newEvent.name = "X";
-        newEvent.value = snakeStep === 1 ? "+" : "-";
+        newEvent.value = snakeStep !== -1 ? "+" : "-";
       }
     } else {
       const snakeStep = getSnakeHeadParams().snakeHeadStepY;
@@ -54,7 +54,7 @@ const swipeDirectionEvent = (): Event => {
     }
   } else touchPauseEvent();
 
-  if (newEvent.name !== "") TIMER.startTimer();
+  if (newEvent.name !== "" && !checkPause()) TIMER.startTimer();
 
   return newEvent;
 };
