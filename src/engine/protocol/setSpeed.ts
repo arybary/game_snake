@@ -3,6 +3,7 @@
  *     @var snakeHeadSteps Сохраняет текущие шаги движения змейки
  *     @function setSpeed Задает интервал перерисовки игрового поля
  */
+import { checkPause } from "../events/pauseEvent";
 import { obstacleSpeedReset } from "../obstacles/obstacleSpeed";
 import { getSnakeHeadParams, setSnakeHeadParams } from "../snake/snake";
 import checkTimerStep from "../time/checkTimerStep";
@@ -26,6 +27,7 @@ let snakeHeadSteps: number[];
  *  - позволяет изменение минимальной скорости игры только на 1
  */
 function setSpeed(speed: number) {
+  if (checkPause()) return;
   const currentTimeStep = TIMER.getStep();
   obstacleSpeedReset();
   if (currentTimeStep > 0 && currentTimeStep < 5)

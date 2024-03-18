@@ -25,25 +25,25 @@ const Bonuses: React.FC = () => {
         <mesh position={bonusPosition}>
           <boxGeometry args={[1, 1, 1]} />
           {getBonuses()[getCurrentBonus()].type === "snakeBreaksObstacles" && (
-            <meshStandardMaterial color="darkgreen" />
+            <meshStandardMaterial color="#453347" />
           )}
           {getBonuses()[getCurrentBonus()].type === "snakeStopsGrowing" && (
-            <meshStandardMaterial color="green" />
+            <meshStandardMaterial color="#5d445f" />
           )}
           {getBonuses()[getCurrentBonus()].type === "snakeCrossesBorders" && (
-            <meshStandardMaterial color="lime" />
+            <meshStandardMaterial color="#6e4f71" />
           )}
           {getBonuses()[getCurrentBonus()].type === "addExtraTime" && (
-            <meshStandardMaterial color="greenyellow" />
+            <meshStandardMaterial color="#7f5a83" />
           )}
           {getBonuses()[getCurrentBonus()].type === "addExtraLives" && (
-            <meshStandardMaterial color="darkolivegreen" />
+            <meshStandardMaterial color="#8c6c91" />
           )}
           {getBonuses()[getCurrentBonus()].type === "addExtraScores" && (
-            <meshStandardMaterial color="olive" />
+            <meshStandardMaterial color="#997d9e" />
           )}
           {getBonuses()[getCurrentBonus()].type === "doubleScoresFood" && (
-            <meshStandardMaterial color="yellowgreen" />
+            <meshStandardMaterial color="#9c89a4" />
           )}
         </mesh>
       )}

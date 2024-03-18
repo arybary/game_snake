@@ -17,8 +17,6 @@ import setSpeed from "./setSpeed";
  * Выполняет последнюю запись в протоколе игры
  */
 function protocolExecutor(newEvent: Event): void {
-  console.log(newEvent);
-
   addEvent(newEvent);
   const { name, value } = newEvent;
   switch (name) {

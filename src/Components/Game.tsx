@@ -1,8 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import {
-  //  OrbitControls,
-  OrthographicCamera,
-} from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
 import { useState } from "react";
 import { getTimerStep } from "./../engine/time/timerStepPerLevel";
 import { getField } from "./../engine/field/fieldPerLevel";
@@ -22,6 +19,8 @@ import { getObstacles } from "./../engine/obstacles/obstaclesPerLevel";
 import { setBonusParams } from "./../engine/bonuses/bonusParams";
 import Bonuses from "./Bonuses";
 import { getBonuses } from "./../engine/bonuses/bonusesPerLevel";
+// import ControlPanel from "./ControlPanel";
+// import ControlBall from "./ControlBall";
 
 function Game() {
   const gridSize = getField();
@@ -31,7 +30,6 @@ function Game() {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     if ((elapsedTime - previousTime) * 1000 > getTimerStep()) {
-      /*  Игровые механики  */
       INTERRUPT.interruptGameEvent();
       if (!INTERRUPT.getInterruptGame()) {
         setBonusParams();
@@ -41,14 +39,12 @@ function Game() {
         snakeCatchesBonusEvent();
       }
       if (checkTimerWorking()) setTimer(getTimerStep());
-      /* ------------------- */
       setPreviousTime(elapsedTime);
     }
   });
 
   return (
     <>
-      {/* <OrbitControls /> */}
       <OrthographicCamera
         makeDefault
         position={[0, 0, 10]}
