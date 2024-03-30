@@ -2,7 +2,7 @@ import * as THREE from "three";
 import snakeBodyGenerator from "./snakeBody/snakeBodyGenerator";
 import snakeHead from "./snakeHead/snakeHead";
 
-function snakeModel(length) {
+function snakeModel(length: number) {
   const snake = new THREE.Group();
   snake.add(snakeHead());
   snake.add(snakeBodyGenerator(length));

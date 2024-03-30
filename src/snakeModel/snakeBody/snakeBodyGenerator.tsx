@@ -2,7 +2,7 @@ import * as THREE from "three";
 import snakeBodyGeometry from "./snakeBodyGeometry";
 import { material1, material2 } from "../snakeMaterials";
 
-function snakeBodyGenerator(length) {
+function snakeBodyGenerator(length: number) {
   const body = new THREE.Group();
   const groups = [];
   const boxes1 = [];

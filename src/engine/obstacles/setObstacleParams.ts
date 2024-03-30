@@ -10,6 +10,12 @@ import { getTimerStep } from "../time/timerStepPerLevel";
  */
 function setObstacleParams(speed: number): void {
   SPEED.obstacleSpeedCounter();
+  console.log(
+    SPEED.getObstacleSpeed(),
+    speed,
+    getTimerStep(),
+    speed / getTimerStep()
+  );
   if (SPEED.getObstacleSpeed() === speed / getTimerStep()) {
     ["x", "y"].forEach((type) => moveObstacles(type));
     SPEED.obstacleSpeedReset();
