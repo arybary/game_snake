@@ -33,7 +33,7 @@ function Game() {
       INTERRUPT.interruptGameEvent();
       if (!INTERRUPT.getInterruptGame()) {
         setBonusParams();
-        setObstacleParams(500);
+        setObstacleParams(600);
         moveSnake();
         snakeCatchesFoodEvent();
         snakeCatchesBonusEvent();
