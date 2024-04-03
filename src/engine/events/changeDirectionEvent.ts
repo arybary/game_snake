@@ -10,6 +10,7 @@ import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { getInterruptGame } from "./interruptGameEvent";
 import { checkPause } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
+import { checkTimerWorking } from "../time/isTimer";
 /**
  * @var Положение головы змейки перед совершением хода
  */
@@ -38,6 +39,10 @@ function setPreviousHeadCoord(coord: number[]) {
  */
 const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
+  if (!checkTimerWorking()) {
+    setPreviousHeadCoord([0, 0]);
+    moveDirection.name = "Z";
+  }
   let newName = "";
   let newValue = 0;
   if (

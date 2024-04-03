@@ -12,7 +12,11 @@ const Snake: React.FC = () => {
   return (
     <group>
       {SNAKE.getSnakeBodyCoord().map((_: unknown, index: number) => {
-        if (index === 0) {
+        if (
+          index === 0 &&
+          (findLastMoveDirection().value !== "+" ||
+            findLastMoveDirection().value !== "-")
+        ) {
           diffX =
             findLastMoveDirection().name === "X"
               ? 0
