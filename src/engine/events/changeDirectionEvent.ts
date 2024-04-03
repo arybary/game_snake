@@ -25,16 +25,16 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   let newValue = 0;
   if (checkTimerStep() || getInterruptGame())
     return { name: newName, value: newValue };
-  if (e.code === "ArrowUp" && moveDirection !== "X") {
+  if (e.code === "ArrowUp" && moveDirection.name !== "X") {
     newName = "X";
     newValue = 1;
-  } else if (e.code === "ArrowDown" && moveDirection !== "X") {
+  } else if (e.code === "ArrowDown" && moveDirection.name !== "X") {
     newName = "X";
     newValue = -1;
-  } else if (e.code === "ArrowLeft" && moveDirection !== "Y") {
+  } else if (e.code === "ArrowLeft" && moveDirection.name !== "Y") {
     newName = "Y";
     newValue = -1;
-  } else if (e.code === "ArrowRight" && moveDirection !== "Y") {
+  } else if (e.code === "ArrowRight" && moveDirection.name !== "Y") {
     newName = "Y";
     newValue = 1;
   }

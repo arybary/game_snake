@@ -1,7 +1,6 @@
-import * as THREE from "three";
 import * as VERT from "./snakeBodyVertices";
 
-function snakeBodyGeometry() {
+function SnakeBodyGeometry() {
   const faceABC = VERT.verticesA.concat(VERT.verticesC, VERT.verticesB);
   const faceDEF = VERT.verticesD.concat(VERT.verticesE, VERT.verticesF);
   const faceADF = VERT.verticesA.concat(VERT.verticesD, VERT.verticesF);
@@ -20,11 +19,16 @@ function snakeBodyGeometry() {
     faceEBD
   );
   const vertices = new Float32Array(allFaces);
-  const bufferAttribute = new THREE.BufferAttribute(vertices, 3);
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", bufferAttribute);
-
-  return geometry;
+  return (
+    <bufferGeometry>
+      <bufferAttribute
+        attach="attributes-position"
+        count={vertices.length / 3}
+        array={vertices}
+        itemSize={3}
+      />
+    </bufferGeometry>
+  );
 }
 
-export default snakeBodyGeometry;
+export default SnakeBodyGeometry;
