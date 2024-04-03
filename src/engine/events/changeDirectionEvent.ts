@@ -1,5 +1,6 @@
 /**
  * @module changeDirectionEvent.ts Управление змейкой с клавиатуры
+ *    @var previousHeadCoord Хранит положение головы змейки перед текщим ходом
  *    @function changeDirectionEvent Отрабатывает нажатие клавиш
  */
 import { Event } from "../../types/event";
@@ -8,6 +9,21 @@ import checkTimerStep from "../time/checkTimerStep";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { getInterruptGame } from "./interruptGameEvent";
 import { checkPause } from "./pauseEvent";
+import { getSnakeHeadParams } from "../snake/snake";
+/**
+ * @var Положение головы змейки перед совершением хода
+ */
+const previousHeadCoord = {
+  x: 0,
+  y: 0,
+};
+/**
+ * Запоминает положение головы змейки на текущем ходе
+ */
+function setPreviousHeadCoord(coord: number[]) {
+  previousHeadCoord.x = coord[0];
+  previousHeadCoord.y = coord[1];
+}
 /**
  * Изменяет направление движения змейки при нажатии клавиш со стрелками
  * @param e событие нажатия клавиши на клавиатуре
@@ -15,16 +31,26 @@ import { checkPause } from "./pauseEvent";
  * 1. Каждое нажатие должно фиксироваться рендером
  * 2. Повтороное нажатие не отрабатывается
  * 3. Если скорость движения змейки нулевая, нажатие также не отрабатывается
- * 4. Отработка нажатия клавиши происходит внесением записи об этом в протокол
- * 5. Нажатие клавиши запускает игру
+ * 4. Если последнее нажатие не отработано, следующее также не отрабатывается
+ * 5. Отработка нажатия клавиши происходит внесением записи об этом в протокол
+ * 6. Нажатие клавиши запускает игру
  * @returns событие изменения направления движения змейки, или "пустое" событие
  */
 const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
   let newName = "";
   let newValue = 0;
-  if (checkTimerStep() || getInterruptGame())
+  if (
+    checkTimerStep() ||
+    getInterruptGame() ||
+    (previousHeadCoord.x === getSnakeHeadParams().snakeHeadCoordX &&
+      previousHeadCoord.y === getSnakeHeadParams().snakeHeadCoordY)
+  )
     return { name: newName, value: newValue };
+  setPreviousHeadCoord([
+    getSnakeHeadParams().snakeHeadCoordX,
+    getSnakeHeadParams().snakeHeadCoordY,
+  ]);
   if (e.code === "ArrowUp" && moveDirection.name !== "X") {
     newName = "X";
     newValue = 1;
