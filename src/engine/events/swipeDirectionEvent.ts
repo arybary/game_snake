@@ -17,18 +17,18 @@ const swipeDirectionEvent = (): Event => {
   const yDiff = getTouch()[1].y - getTouch()[0].y;
   if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) > 10) {
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
-      if (yDiff > 0 && moveDirection !== "X") {
+      if (yDiff > 0 && moveDirection.name !== "X") {
         newEvent.name = "X";
         newEvent.value = -1;
-      } else if (yDiff < 0 && moveDirection !== "X") {
+      } else if (yDiff < 0 && moveDirection.name !== "X") {
         newEvent.name = "X";
         newEvent.value = 1;
       }
     } else {
-      if (xDiff > 0 && moveDirection !== "Y") {
+      if (xDiff > 0 && moveDirection.name !== "Y") {
         newEvent.name = "Y";
         newEvent.value = 1;
-      } else if (xDiff < 0 && moveDirection !== "Y") {
+      } else if (xDiff < 0 && moveDirection.name !== "Y") {
         newEvent.name = "Y";
         newEvent.value = -1;
       }
@@ -39,19 +39,19 @@ const swipeDirectionEvent = (): Event => {
     }
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       const snakeStep = getSnakeHeadParams().snakeHeadStepX;
-      if (yDiff > 0 && moveDirection === "X") {
+      if (yDiff > 0 && moveDirection.name === "X") {
         newEvent.name = "X";
         newEvent.value = snakeStep !== 1 ? "+" : "-";
-      } else if (yDiff < 0 && moveDirection === "X") {
+      } else if (yDiff < 0 && moveDirection.name === "X") {
         newEvent.name = "X";
         newEvent.value = snakeStep !== -1 ? "+" : "-";
       }
     } else {
       const snakeStep = getSnakeHeadParams().snakeHeadStepY;
-      if (xDiff > 0 && moveDirection === "Y") {
+      if (xDiff > 0 && moveDirection.name === "Y") {
         newEvent.name = "Y";
         newEvent.value = snakeStep !== -1 ? "+" : "-";
-      } else if (xDiff < 0 && moveDirection === "Y") {
+      } else if (xDiff < 0 && moveDirection.name === "Y") {
         newEvent.name = "Y";
         newEvent.value = snakeStep !== 1 ? "+" : "-";
       }
