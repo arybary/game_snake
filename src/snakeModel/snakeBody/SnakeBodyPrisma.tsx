@@ -1,5 +1,5 @@
 import { SnakeBodyGeometryProps } from "../../types/snake";
-import SnakeBodyGeometry from "./SnakeBodyGeometry";
+import SnakeBodyGeometry from "./snakeBodyGeometry";
 
 export function SnakeBodyRightPrisma(props: SnakeBodyGeometryProps) {
   return (
