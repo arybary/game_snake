@@ -7,7 +7,6 @@ function App() {
   return (
     <Wrapper>
       <Canvas>
-        <OrbitControls />
         <Game />
       </Canvas>
     </Wrapper>
