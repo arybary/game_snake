@@ -1,9 +1,9 @@
 // import React, { useRef, useEffect } from "react";
 import { ReactNode } from "react";
-import GameDetails from "./GameDetails";
-import swipeDirectionEvent from "../engine/events/swipeDirectionEvent";
-import { setTouch } from "../engine/events/touchEvent";
-import protocolExecutor from "../engine/protocol/protocolExecutor";
+import GameInfo from "../GameInfo/GameInfo";
+import swipeDirectionEvent from "../../engine/events/swipeDirectionEvent";
+import { setTouch } from "../../engine/events/touchEvent";
+import protocolExecutor from "../../engine/protocol/protocolExecutor";
 
 function Wrapper({ children }: { children: ReactNode }) {
   const startTouch = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -18,7 +18,7 @@ function Wrapper({ children }: { children: ReactNode }) {
 
   return (
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
-      <GameDetails />
+      <GameInfo />
       {children}
     </div>
   );
