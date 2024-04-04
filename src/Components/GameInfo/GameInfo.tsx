@@ -1,8 +1,8 @@
-import "../../style.css";
+import "../../../style.css";
 
-function GameDetails() {
+function GameInfo() {
   return (
-    <div className="game-details">
+    <div className="game-info">
       <i className="fa-solid fa-wallet"></i>
       <i className="fa-solid fa-carrot"></i>
       <i className="fa-solid fa-clock"></i>
@@ -13,4 +13,4 @@ function GameDetails() {
   );
 }
 
-export default GameDetails;
+export default GameInfo;

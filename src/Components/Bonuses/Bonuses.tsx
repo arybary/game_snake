@@ -2,11 +2,11 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Vector3 } from "@react-three/fiber";
-import { getField } from "./../engine/field/fieldPerLevel";
-import { getFoodEaten } from "./../engine/events/snakeCatchesFoodEvent";
-import { getBonusCoord, getCurrentBonus } from "./../engine/bonuses/bonus";
-import { getBonusAvailability } from "./../engine/bonuses/bonusAvailableState";
-import { getBonuses } from "./../engine/bonuses/bonusesPerLevel";
+import { getField } from "../../engine/field/fieldPerLevel";
+import { getFoodEaten } from "../../engine/events/snakeCatchesFoodEvent";
+import { getBonusCoord, getCurrentBonus } from "../../engine/bonuses/bonus";
+import { getBonusAvailability } from "../../engine/bonuses/bonusAvailableState";
+import { getBonuses } from "../../engine/bonuses/bonusesPerLevel";
 
 const Bonuses: React.FC = () => {
   const [bonusPosition, setBonusPosition] = useState<Vector3>([0, 0, 0]);

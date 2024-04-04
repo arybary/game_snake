@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
-import floorTexture from "../assets/floor.png";
-import { FieldsProps } from "../types/field";
+import floorTexture from "../../assets/floor.png";
+import { FieldsProps } from "../../types/field";
 
 const Fields: React.FC<FieldsProps> = ({ size }) => {
   const texture = useTexture(floorTexture);

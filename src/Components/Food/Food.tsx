@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import { getFoodCoord } from "./../engine/food/food";
+import { getFoodCoord } from "../../engine/food/food";
 import { useState, useEffect } from "react";
-import { getField } from "./../engine/field/fieldPerLevel";
+import { getField } from "../../engine/field/fieldPerLevel";
 import { Vector3 } from "@react-three/fiber";
-import { getFoodEaten } from "./../engine/events/snakeCatchesFoodEvent";
-import { howMuchIsLeftToEat } from "./../engine/food/currentFoodNumber";
+import { getFoodEaten } from "../../engine/events/snakeCatchesFoodEvent";
+import { howMuchIsLeftToEat } from "../../engine/food/currentFoodNumber";
 
 const Food: React.FC = () => {
   const [foodPosition, setFoodPosition] = useState<Vector3>([0, 0, 0]);
