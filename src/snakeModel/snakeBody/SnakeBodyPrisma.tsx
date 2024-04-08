@@ -1,20 +1,20 @@
-import { SnakeBodyGeometryProps } from "../../types/snake";
+import { GeometryProps } from "../../types/three";
 import SnakeBodyGeometry from "./SnakeBodyGeometry";
 
-export function SnakeBodyRightPrisma(props: SnakeBodyGeometryProps) {
+export function SnakeBodyRightPrisma(props: GeometryProps) {
   return (
     <mesh {...props}>
       <SnakeBodyGeometry />
-      <meshStandardMaterial color={"red"} />
+      <meshStandardMaterial color={0x44abda} />
     </mesh>
   );
 }
 
-export function SnakeBodyLeftPrisma(props: SnakeBodyGeometryProps) {
+export function SnakeBodyLeftPrisma(props: GeometryProps) {
   return (
     <mesh {...props}>
       <SnakeBodyGeometry />
-      <meshStandardMaterial color={"white"} />
+      <meshStandardMaterial color={0xfedc32} />
     </mesh>
   );
 }
