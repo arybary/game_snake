@@ -45,7 +45,6 @@ function Game() {
 
   return (
     <>
-
       <OrthographicCamera
         makeDefault
         position={[0, 0, 10]}
