@@ -45,7 +45,7 @@ function Game() {
 
   return (
     <>
-      <OrbitControls />
+
       <OrthographicCamera
         makeDefault
         position={[0, 0, 10]}
