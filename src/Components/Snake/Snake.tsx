@@ -35,7 +35,10 @@ const Snake: React.FC = () => {
     <group>
       {move.map((item, index) => {
         return (
-          <a.group key={index * Math.random()} position={item.position}>
+          <a.group
+            key={index * Math.random()}
+            position={item.position.to((x, y, z) => [x, y, z])}
+          >
             {index === 0 && <SnakeHead {...setSnakeHeadProps()} />}
             {index !== 0 && index !== SNAKE.getSnakeBodyCoord().length - 1 && (
               <>
