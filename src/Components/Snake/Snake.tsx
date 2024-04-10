@@ -7,20 +7,35 @@ import setSnakePosition from "./setSnakePosition";
 import setSnakeHeadProps from "./snakeHead/setSnakeHeadProps";
 import setSnakeTailProps from "./snakeTail/setSnakeTailProps";
 import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
-import { useSpring } from "@react-spring/web";
-import { SnakeBodyCoord } from "../../types/snake";
+import { a, useSprings } from "@react-spring/three";
+import { SnakePositionAnimationProps } from "../../types/three";
 
 const Snake: React.FC = () => {
-  const snakeFrom: SnakeBodyCoord;
-  const snakeTo: SnakeBodyCoord;
-  SNAKE.getSnakeBodyCoord().forEach();
-  const position = useSpring({});
-
+  const snake: SnakePositionAnimationProps[] = [
+    {
+      initialPosition: [0, 0, 0],
+      finalPosition: [0, 0, 0],
+    },
+  ];
+  SNAKE.getSnakeBodyCoord().forEach((_: unknown, index: number) => {
+    snake[index] = {
+      initialPosition: [...setSnakePosition(index, SNAKE.getPreviousSnake())],
+      finalPosition: [...setSnakePosition(index, SNAKE.getSnakeBodyCoord())],
+    };
+    if (index !== SNAKE.getSnakeBodyCoord().length - 1) snake.length += 1;
+  });
+  const move = useSprings(
+    snake.length,
+    snake.map((item) => ({
+      from: { position: item.initialPosition },
+      to: { position: item.finalPosition },
+    }))
+  );
   return (
     <group>
-      {SNAKE.getSnakeBodyCoord().map((_: unknown, index: number) => {
+      {move.map((item, index) => {
         return (
-          <group key={index * Math.random()} position={setSnakePosition(index)}>
+          <a.group key={index * Math.random()} position={item.position}>
             {index === 0 && <SnakeHead {...setSnakeHeadProps()} />}
             {index !== 0 && index !== SNAKE.getSnakeBodyCoord().length - 1 && (
               <>
@@ -31,7 +46,7 @@ const Snake: React.FC = () => {
             {index === SNAKE.getSnakeBodyCoord().length - 1 && (
               <SnakeTail {...setSnakeTailProps(index)} />
             )}
-          </group>
+          </a.group>
         );
       })}
     </group>
