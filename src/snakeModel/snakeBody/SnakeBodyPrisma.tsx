@@ -1,5 +1,5 @@
 
-import { SnakeBodyGeometryProps } from "../../types/snake";
+import { GeometryProps } from "../../types/three";
 import SnakeBodyGeometry from "./snakeBodyGeometry";
 
 
