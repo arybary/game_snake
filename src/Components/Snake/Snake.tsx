@@ -2,83 +2,51 @@ import React from "react";
 import SnakeHead from "../../snakeModel/snakeHead/SnakeHead";
 import * as PRISMA from "../../snakeModel/snakeBody/SnakeBodyPrisma";
 import * as SNAKE from "../../engine/snake/snake";
-import { getField } from "../../engine/field/fieldPerLevel";
-import { Vector3 } from "three";
-import { snakeBodyTransform } from "./snakeBody/snakeBodyTransform";
-import snakeHeadTransform from "./snakeHead/snakeHeadTransform";
 import SnakeTail from "../../snakeModel/snakeTail/snakeTail";
-import snakeTailTransform from "./snakeTail/snakeTailTransform";
+import setSnakePosition from "./setSnakePosition";
+import setSnakeHeadProps from "./snakeHead/setSnakeHeadProps";
+import setSnakeTailProps from "./snakeTail/setSnakeTailProps";
+import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
+import { a, useSprings } from "@react-spring/three";
+import { SnakePositionAnimationProps } from "../../types/three";
 
 const Snake: React.FC = () => {
-  const gridSize = getField();
+  const snake: SnakePositionAnimationProps[] = [
+    {
+      initialPosition: [0, 0, 0],
+      finalPosition: [0, 0, 0],
+    },
+  ];
+  SNAKE.getSnakeBodyCoord().forEach((_: unknown, index: number) => {
+    snake[index] = {
+      initialPosition: [...setSnakePosition(index, SNAKE.getPreviousSnake())],
+      finalPosition: [...setSnakePosition(index, SNAKE.getSnakeBodyCoord())],
+    };
+    if (index !== SNAKE.getSnakeBodyCoord().length - 1) snake.length += 1;
+  });
+  const move = useSprings(
+    snake.length,
+    snake.map((item) => ({
+      from: { position: item.initialPosition },
+      to: { position: item.finalPosition },
+    }))
+  );
   return (
     <group>
-      {SNAKE.getSnakeBodyCoord().map((_: unknown, index: number) => {
-        const [bodyPos, bodyRot, bodyScl] = snakeBodyTransform(index);
-        const [headPos, headRot, headScl] = snakeHeadTransform();
-        const [tailPos, tailRot, tailScl] = snakeTailTransform(index);
+      {move.map((item, index) => {
         return (
-          <group
-            key={index * Math.random()}
-            position={[
-              Math.round(
-                SNAKE.getSnakeBodyCoord()[index][1] - gridSize / 2 - 1
-              ),
-              Math.round(
-                SNAKE.getSnakeBodyCoord()[index][0] - gridSize / 2 - 1
-              ),
-              0,
-            ]}
-          >
-            {index === 0 && (
-              <SnakeHead
-                position={new Vector3(headPos[0], headPos[1], headPos[2])}
-                rotation-x={headRot[0]}
-                rotation-y={headRot[1]}
-                rotation-z={headRot[2]}
-                scale={headScl[0]}
-              />
-            )}
+          <a.group key={index * Math.random()} position={item.position}>
+            {index === 0 && <SnakeHead {...setSnakeHeadProps()} />}
             {index !== 0 && index !== SNAKE.getSnakeBodyCoord().length - 1 && (
               <>
-                <PRISMA.SnakeBodyRightPrisma
-                  position={
-                    new Vector3(
-                      bodyPos.right[0],
-                      bodyPos.right[1],
-                      bodyPos.right[2]
-                    )
-                  }
-                  rotation-x={bodyRot.right[0]}
-                  rotation-y={bodyRot.right[1]}
-                  rotation-z={bodyRot.right[2]}
-                  scale={bodyScl.right[0]}
-                />
-                <PRISMA.SnakeBodyLeftPrisma
-                  position={
-                    new Vector3(
-                      bodyPos.left[0],
-                      bodyPos.left[1],
-                      bodyPos.left[2]
-                    )
-                  }
-                  rotation-x={bodyRot.left[0]}
-                  rotation-y={bodyRot.left[1]}
-                  rotation-z={bodyRot.left[2]}
-                  scale={bodyScl.left[0]}
-                />
+                <PRISMA.SnakeBodyRightPrisma {...setSnakeBodyProps(index)[0]} />
+                <PRISMA.SnakeBodyLeftPrisma {...setSnakeBodyProps(index)[1]} />
               </>
             )}
             {index === SNAKE.getSnakeBodyCoord().length - 1 && (
-              <SnakeTail
-                position={new Vector3(tailPos[0], tailPos[1], tailPos[2])}
-                rotation-x={tailRot[0]}
-                rotation-y={tailRot[1]}
-                rotation-z={tailRot[2]}
-                scale={tailScl[0]}
-              />
+              <SnakeTail {...setSnakeTailProps(index)} />
             )}
-          </group>
+          </a.group>
         );
       })}
     </group>
