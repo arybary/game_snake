@@ -7,3 +7,8 @@ export type GeometryProps = {
   "rotation-z": number;
   scale: number;
 };
+
+export type SnakePositionAnimationProps = {
+  initialPosition: number[];
+  finalPosition: number[];
+};
