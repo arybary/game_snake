@@ -40,15 +40,16 @@ const Snake: React.FC = () => {
             position={item.position.to((x, y, z) => [x, y, z])}
           >
             {index === 0 && <SnakeHead {...setSnakeHeadProps()} />}
-            {index !== 0 && index !== SNAKE.getSnakeBodyCoord().length - 1 && (
+            {index !== 0 && index <= SNAKE.getSnakeBodyCoord().length - 3 && (
               <>
                 <PRISMA.SnakeBodyRightPrisma {...setSnakeBodyProps(index)[0]} />
                 <PRISMA.SnakeBodyLeftPrisma {...setSnakeBodyProps(index)[1]} />
               </>
             )}
-            {index === SNAKE.getSnakeBodyCoord().length - 1 && (
+            {index === SNAKE.getSnakeBodyCoord().length - 2 && (
               <SnakeTail {...setSnakeTailProps(index)} />
             )}
+            {index === SNAKE.getSnakeBodyCoord().length - 1 && <></>}
           </a.group>
         );
       })}

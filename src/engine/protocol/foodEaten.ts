@@ -7,7 +7,6 @@ import { getStopsGrowing } from "../bonuses/bonusSnakeStopsGrowing";
 import { getFoodScores } from "../food/food";
 import setFood from "../food/setFood";
 import { setScores } from "../scores/scores";
-import moveSnake from "../snake/moveSnake";
 import * as SNAKE from "../snake/snake";
 /**
  * Выводит новую еду, задает вознаграждение, добавляет длину змейке, если можно
@@ -15,8 +14,13 @@ import * as SNAKE from "../snake/snake";
 function foodEaten() {
   setFood(1);
   setScores(getDoubleScoresFood() ? getFoodScores() * 2 : getFoodScores());
-  if (!getStopsGrowing()) SNAKE.addSnakeBodyCoord([]);
-  moveSnake();
+  const newItem = [
+    SNAKE.getSnakeBodyCoord()[SNAKE.getSnakeBodyCoord().length - 1][0] -
+      SNAKE.getSnakeHeadParams().snakeHeadStepX,
+    SNAKE.getSnakeBodyCoord()[SNAKE.getSnakeBodyCoord().length - 1][1] -
+      SNAKE.getSnakeHeadParams().snakeHeadStepY,
+  ];
+  if (!getStopsGrowing()) SNAKE.addSnakeBodyCoord(newItem);
 }
 
 export default foodEaten;

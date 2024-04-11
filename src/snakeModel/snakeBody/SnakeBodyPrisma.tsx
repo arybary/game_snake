@@ -1,7 +1,5 @@
-
 import { GeometryProps } from "../../types/three";
 import SnakeBodyGeometry from "./snakeBodyGeometry";
-
 
 export function SnakeBodyRightPrisma(props: GeometryProps) {
   return (
@@ -20,4 +18,3 @@ export function SnakeBodyLeftPrisma(props: GeometryProps) {
     </mesh>
   );
 }
-

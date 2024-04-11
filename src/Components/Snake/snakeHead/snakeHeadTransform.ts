@@ -14,7 +14,7 @@ function snakeHeadTransform() {
   const currentFoodNumber = getCurrentFoodNumber();
   const pos = snakeHeadSetPosition(diffX, diffY, 0.05);
   const rot = snakeHeadSetRotation(diffX, diffY, 22);
-  const scl = snakeHeadSetScale(0.6 + (0.4 * currentFoodNumber) / amountOfFood);
+  const scl = snakeHeadSetScale(0.6 + (0.5 * currentFoodNumber) / amountOfFood);
 
   return [pos, rot, scl];
 }

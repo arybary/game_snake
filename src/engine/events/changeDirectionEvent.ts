@@ -59,7 +59,11 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   if (e.code === "ArrowUp" && moveDirection.name !== "X") {
     newName = "X";
     newValue = 1;
-  } else if (e.code === "ArrowDown" && moveDirection.name !== "X") {
+  } else if (
+    e.code === "ArrowDown" &&
+    moveDirection.name !== "X" &&
+    findLastMoveDirection().name !== ""
+  ) {
     newName = "X";
     newValue = -1;
   } else if (e.code === "ArrowLeft" && moveDirection.name !== "Y") {
