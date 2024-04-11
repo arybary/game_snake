@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 86110167ae5e2d67c0e396175cfd33e36a5ed431
 import { GeometryProps } from "../../types/three";
 import SnakeBodyGeometry from "./snakeBodyGeometry";
 
