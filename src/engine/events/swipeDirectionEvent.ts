@@ -29,7 +29,11 @@ const swipeDirectionEvent = (): Event => {
   const yDiff = getTouch()[1].y - getTouch()[0].y;
   if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) > 10 && !checkPause()) {
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
-      if (yDiff > 0 && moveDirection.name !== "X") {
+      if (
+        yDiff > 0 &&
+        moveDirection.name !== "X" &&
+        findLastMoveDirection().name !== ""
+      ) {
         newEvent.name = "X";
         newEvent.value = -1;
       } else if (yDiff < 0 && moveDirection.name !== "X") {
