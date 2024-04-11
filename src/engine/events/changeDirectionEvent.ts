@@ -11,6 +11,7 @@ import { getInterruptGame } from "./interruptGameEvent";
 import { checkPause } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
 import { checkTimerWorking } from "../time/isTimer";
+import { checkMistake } from "../lives/isMistake";
 /**
  * @var Положение головы змейки перед совершением хода
  */
@@ -46,6 +47,7 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   let newName = "";
   let newValue = 0;
   if (
+    checkMistake() ||
     checkTimerStep() ||
     getInterruptGame() ||
     (previousHeadCoord.x === getSnakeHeadParams().snakeHeadCoordX &&
