@@ -28,7 +28,7 @@ function SnakeJawGeometry() {
   );
   const jawVertices = new Float32Array(allJawFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={jawVertices.length / 3}

@@ -12,7 +12,7 @@ function SnakeUpperLipGeometry() {
   );
   const upperLipVertices = new Float32Array(allUpperLipFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={upperLipVertices.length / 3}

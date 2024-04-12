@@ -6,7 +6,7 @@ function SnakeHeadBackGeometry() {
   const allHeadBackFaces = headBackFaceABZ.concat(headBackFaceQAZ);
   const headBackVertices = new Float32Array(allHeadBackFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={headBackVertices.length / 3}

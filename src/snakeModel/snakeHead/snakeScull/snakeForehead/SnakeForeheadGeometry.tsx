@@ -6,7 +6,7 @@ function SnakeForeheadGeometry() {
   const allForeheadFaces = foreheadFaceABC.concat(foreheadFaceBCD);
   const foreheadVertices = new Float32Array(allForeheadFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={foreheadVertices.length / 3}

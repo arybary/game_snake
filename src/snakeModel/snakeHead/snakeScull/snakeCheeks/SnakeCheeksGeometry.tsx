@@ -40,7 +40,7 @@ function SnakeCheeksGeometry() {
   );
   const cheeksVertices = new Float32Array(allCheeksFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={cheeksVertices.length / 3}

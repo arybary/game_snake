@@ -19,8 +19,6 @@ import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
 import { setBonusParams } from "../../engine/bonuses/bonusParams";
 import Bonuses from "../Bonuses/Bonuses";
 import { getBonuses } from "../../engine/bonuses/bonusesPerLevel";
-// import ControlPanel from "./ControlPanel";
-// import ControlBall from "./ControlBall";
 
 function Game() {
   const gridSize = getField();
@@ -44,14 +42,15 @@ function Game() {
   });
 
   return (
-    <>
+    <mesh>
       <OrthographicCamera
         makeDefault
+        near={0.01}
         position={[0, 0, 10]}
         zoom={Math.min(size.width, size.height) / gridSize}
       />
-      <ambientLight />
-      <directionalLight position={[0, 0, 5]} intensity={1} />
+      <ambientLight intensity={0.5} />
+      <directionalLight castShadow position={[0, 0, 5]} intensity={1} />
       <Fields size={gridSize} />
       {getObstacles().length !== 0 && (
         <>
@@ -63,7 +62,7 @@ function Game() {
       {getBonuses().length !== 0 && <Bonuses />}
       <Snake />
       <Food />
-    </>
+    </mesh>
   );
 }
 
