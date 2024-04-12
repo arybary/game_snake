@@ -12,7 +12,7 @@ function SnakeEyelidsGeometry() {
   );
   const eyelidsVertices = new Float32Array(allEyelidsFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={eyelidsVertices.length / 3}

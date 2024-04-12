@@ -28,7 +28,7 @@ function SnakeTailGeometry() {
   );
   const tailVertices = new Float32Array(allTailFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={tailVertices.length / 3}

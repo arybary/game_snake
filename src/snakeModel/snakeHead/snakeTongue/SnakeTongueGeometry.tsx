@@ -36,7 +36,7 @@ function SnakeTongueGeometry() {
   );
   const tongueVertices = new Float32Array(allTongueFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={tongueVertices.length / 3}

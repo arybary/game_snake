@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { /* OrbitControls, */ OrthographicCamera } from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
 import { useState } from "react";
 import { getTimerStep } from "../../engine/time/timerStepPerLevel";
 import { getField } from "../../engine/field/fieldPerLevel";
@@ -43,7 +43,6 @@ function Game() {
 
   return (
     <mesh>
-      {/* <OrbitControls /> */}
       <OrthographicCamera
         makeDefault
         near={0.01}
@@ -51,20 +50,7 @@ function Game() {
         zoom={Math.min(size.width, size.height) / gridSize}
       />
       <ambientLight intensity={0.5} />
-      <directionalLight
-        castShadow
-        position={[0, 0, 5]}
-        intensity={1}
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        shadow-camera-far={50}
-        shadow-camera-left={-10}
-        shadow-camera-right={10}
-        shadow-camera-top={10}
-        shadow-camera-bottom={-10}
-      />
-      {/* <ambientLight intensity={1} />
-      <directionalLight position={[0, 0, 5]} intensity={8} /> */}
+      <directionalLight castShadow position={[0, 0, 5]} intensity={1} />
       <Fields size={gridSize} />
       {getObstacles().length !== 0 && (
         <>
