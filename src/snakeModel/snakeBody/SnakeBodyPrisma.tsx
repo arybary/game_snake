@@ -12,7 +12,7 @@ export function SnakeBodyRightPrisma(props: GeometryProps) {
 
 export function SnakeBodyLeftPrisma(props: GeometryProps) {
   return (
-    <mesh {...props}>
+    <mesh receiveShadow {...props}>
       <SnakeBodyGeometry />
       <meshStandardMaterial color={0xfedc32} />
     </mesh>

@@ -5,6 +5,7 @@ import { getInterruptGame } from "./interruptGameEvent";
 import { getTouch } from "./touchEvent";
 import { checkPause, touchPauseEvent } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
+import { checkMistake } from "../lives/isMistake";
 
 const previousStep = {
   x: 0,
@@ -24,7 +25,7 @@ const swipeDirectionEvent = (): Event => {
     name: "",
     value: 0,
   };
-  if (getInterruptGame()) return newEvent;
+  if (checkMistake() || getInterruptGame()) return newEvent;
   const xDiff = getTouch()[1].x - getTouch()[0].x;
   const yDiff = getTouch()[1].y - getTouch()[0].y;
   if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) > 10 && !checkPause()) {
