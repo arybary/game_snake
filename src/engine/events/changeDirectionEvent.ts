@@ -1,6 +1,6 @@
 /**
  * @module changeDirectionEvent.ts Управление змейкой с клавиатуры
- *    @var previousHeadCoord Хранит положение головы змейки перед текщим ходом
+ *    @var previousHeadCoord Хранит положение головы змейки перед текущим ходом
  *    @function changeDirectionEvent Отрабатывает нажатие клавиш
  */
 import { Event } from "../../types/event";
@@ -13,7 +13,7 @@ import { getSnakeHeadParams } from "../snake/snake";
 import { checkTimerWorking } from "../time/isTimer";
 import { checkMistake } from "../lives/isMistake";
 /**
- * @var Положение головы змейки перед совершением хода
+ * @var Положение головы змейки перед совершением хода (для анимации)
  */
 const previousHeadCoord = {
   x: 0,
@@ -30,7 +30,7 @@ function setPreviousHeadCoord(coord: number[]) {
  * Изменяет направление движения змейки при нажатии клавиш со стрелками
  * @param e событие нажатия клавиши на клавиатуре
  * @description
- * 1. Каждое нажатие должно фиксироваться рендером
+ * 1. После паузы позволяет двигаться змейке в прежнем направлении
  * 2. Повтороное нажатие не отрабатывается
  * 3. Если скорость движения змейки нулевая, нажатие также не отрабатывается
  * 4. Если последнее нажатие не отработано, следующее также не отрабатывается
@@ -40,12 +40,18 @@ function setPreviousHeadCoord(coord: number[]) {
  */
 const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection();
-  if (!checkTimerWorking()) {
-    setPreviousHeadCoord([0, 0]);
-    moveDirection.name = "Z";
-  }
   let newName = "";
   let newValue = 0;
+  let backValueX = 0;
+  let backValueY = 0;
+  if (!checkTimerWorking()) {
+    setPreviousHeadCoord([0, 0]);
+    backValueX =
+      moveDirection.name === "X" ? getSnakeHeadParams().snakeHeadStepX : 0;
+    backValueY =
+      moveDirection.name === "Y" ? getSnakeHeadParams().snakeHeadStepY : 0;
+    moveDirection.name = "";
+  }
   if (
     checkMistake() ||
     checkTimerStep() ||
@@ -60,20 +66,20 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   ]);
   if (e.code === "ArrowUp" && moveDirection.name !== "X") {
     newName = "X";
-    newValue = 1;
+    newValue = backValueX !== -1 ? 1 : -1;
   } else if (
     e.code === "ArrowDown" &&
     moveDirection.name !== "X" &&
     findLastMoveDirection().name !== ""
   ) {
     newName = "X";
-    newValue = -1;
+    newValue = backValueX !== 1 ? -1 : 1;
   } else if (e.code === "ArrowLeft" && moveDirection.name !== "Y") {
     newName = "Y";
-    newValue = -1;
+    newValue = backValueY !== 1 ? -1 : 1;
   } else if (e.code === "ArrowRight" && moveDirection.name !== "Y") {
     newName = "Y";
-    newValue = 1;
+    newValue = backValueY !== -1 ? 1 : -1;
   }
   if (newName !== "" && !checkPause()) TIMER.startTimer();
   const newEvent = Object.assign({}, { name: newName, value: newValue });
