@@ -29,6 +29,7 @@ const Snake: React.FC = () => {
     snake.map((item) => ({
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
+      config: { duration: 150 },
     }))
   );
   return (
