@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { useTexture } from "@react-three/drei";
 import { useState, useMemo } from "react";
 import { FieldsProps } from "../../types/field";
 
