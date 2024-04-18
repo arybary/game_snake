@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { OrthographicCamera } from "@react-three/drei";
+import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import { useState } from "react";
 import { getTimerStep } from "../../engine/time/timerStepPerLevel";
 import { getField } from "../../engine/field/fieldPerLevel";
@@ -43,6 +43,7 @@ function Game() {
 
   return (
     <mesh>
+      <OrbitControls />
       <OrthographicCamera
         makeDefault
         near={0.01}
