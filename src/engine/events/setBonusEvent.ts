@@ -17,7 +17,7 @@ import { catchBonus } from "../bonuses/bonusCatchingState";
  * Генерирует координаты X и Y текущего бонуса, заносит событие в протокол
  */
 function setBonusEvent(): void {
-  let booking: number[][] = [];
+  const booking: number[][] = [];
   if (!getBonusAvailability()) {
     BONUS.setBonusCoord(
       getFreeCell(
