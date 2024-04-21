@@ -80,8 +80,7 @@ const swipeDirectionEvent = (): Event => {
         newEvent.value = snakeStep !== 1 ? "+" : "-";
       }
     }
-  } else if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) < 10)
-    touchPauseEvent();
+  } else if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) < 1) touchPauseEvent();
 
   if (newEvent.name !== "" && !checkPause()) TIMER.startTimer();
 
