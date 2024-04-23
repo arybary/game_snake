@@ -14,7 +14,7 @@ import { howMuchIsLeftToEat } from "../food/currentFoodNumber";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
 // import { checkExecution } from "../protocol/protocolExecutor";
 /**
- * Следит за нажатием клавиш со стрелками, Ctrl, Shift и Space
+ * Следит за нажатием клавиш со стрелками и Space
  * @param e событие нажатия клавиши на клавиатуре
  * @returns прерывает выполнение функции, если нажата неиспользуемая клавиша
  */
