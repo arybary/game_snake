@@ -50,7 +50,6 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
       moveDirection.name === "X" ? getSnakeHeadParams().snakeHeadStepX : 0;
     backValueY =
       moveDirection.name === "Y" ? getSnakeHeadParams().snakeHeadStepY : 0;
-    moveDirection.name = "";
   }
   if (
     checkMistake() ||
@@ -83,6 +82,7 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   }
   if (newName !== "" && !checkPause()) TIMER.startTimer();
   const newEvent = Object.assign({}, { name: newName, value: newValue });
+
   return newEvent;
 };
 
