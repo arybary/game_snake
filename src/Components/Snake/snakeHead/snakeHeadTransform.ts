@@ -9,7 +9,6 @@ let diffY = 0;
 
 function snakeHeadTransform() {
   [diffX, diffY] = snakeHeadDiff(diffX, diffY);
-  // console.log(diffX, diffY);
   const pos = snakeHeadSetPosition(diffX, diffY, 0.05);
   const rot = snakeHeadSetRotation(diffX, diffY, 22);
   const scl = snakeHeadSetScale(

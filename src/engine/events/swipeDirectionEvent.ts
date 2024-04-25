@@ -6,29 +6,41 @@ import { getTouch } from "./touchEvent";
 import { checkPause, touchPauseEvent } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
 import { checkMistake } from "../lives/isMistake";
+import { SnakeHeadCoord } from "../../types/snake";
 
-const previousStep = {
-  x: 0,
-  y: 0,
+let previousHeadParams: SnakeHeadCoord = {
+  snakeHeadCoordX: 0,
+  snakeHeadCoordY: 0,
+  snakeHeadStepX: 0,
+  snakeHeadStepY: 0,
 };
 
 const swipeDirectionEvent = (): Event => {
-  const moveDirection = findLastMoveDirection();
-  if (
-    getSnakeHeadParams().snakeHeadStepX !== 0 ||
-    getSnakeHeadParams().snakeHeadStepY !== 0
-  ) {
-    previousStep.x = getSnakeHeadParams().snakeHeadStepX;
-    previousStep.y = getSnakeHeadParams().snakeHeadStepY;
-  }
   const newEvent: Event = {
     name: "",
     value: 0,
   };
-  if (checkMistake() || getInterruptGame()) return newEvent;
+  if (
+    checkMistake() ||
+    getInterruptGame() ||
+    (previousHeadParams.snakeHeadCoordX ===
+      getSnakeHeadParams().snakeHeadCoordX &&
+      previousHeadParams.snakeHeadCoordY ===
+        getSnakeHeadParams().snakeHeadCoordY)
+  ) {
+    previousHeadParams.snakeHeadCoordX = 0;
+    previousHeadParams.snakeHeadCoordY = 0;
+    return newEvent;
+  }
+  const moveDirection = findLastMoveDirection();
+  if (
+    getSnakeHeadParams().snakeHeadStepX !== 0 ||
+    getSnakeHeadParams().snakeHeadStepY !== 0
+  )
+    previousHeadParams = Object.assign({}, getSnakeHeadParams());
   const xDiff = getTouch()[1].x - getTouch()[0].x;
   const yDiff = getTouch()[1].y - getTouch()[0].y;
-  if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) > 10 && !checkPause()) {
+  if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) > 1 && !checkPause()) {
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       if (
         yDiff > 0 &&
@@ -57,9 +69,8 @@ const swipeDirectionEvent = (): Event => {
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       const snakeStep =
         getSnakeHeadParams().snakeHeadStepX === 0
-          ? previousStep.x
+          ? previousHeadParams.snakeHeadStepX
           : getSnakeHeadParams().snakeHeadStepX;
-
       if (yDiff > 0 && moveDirection.name === "X") {
         newEvent.name = "X";
         newEvent.value = snakeStep !== 1 ? "+" : "-";
@@ -70,7 +81,7 @@ const swipeDirectionEvent = (): Event => {
     } else {
       const snakeStep =
         getSnakeHeadParams().snakeHeadStepY === 0
-          ? previousStep.y
+          ? previousHeadParams.snakeHeadStepY
           : getSnakeHeadParams().snakeHeadStepY;
       if (xDiff > 0 && moveDirection.name === "Y") {
         newEvent.name = "Y";

@@ -30,14 +30,32 @@ function speedEvent(e: KeyboardEvent): Event {
     (moveDirection.name === "Y" &&
       currentDirection === 1 &&
       e.code === "ArrowRight") ||
-    (currentDirection === -1 && e.code === "ArrowLeft") ||
+    (moveDirection.name === "Y" &&
+      currentDirection === -1 &&
+      e.code === "ArrowLeft") ||
     (moveDirection.name === "X" &&
       currentDirection === 1 &&
       e.code === "ArrowUp") ||
-    (currentDirection === -1 && e.code === "ArrowDown")
+    (moveDirection.name === "X" &&
+      currentDirection === -1 &&
+      e.code === "ArrowDown")
   )
     newEvent = Object.assign({}, { name: moveDirection.name, value: "+" });
-  else newEvent = Object.assign({}, { name: moveDirection.name, value: "-" });
+  if (
+    (moveDirection.name === "Y" &&
+      currentDirection === 1 &&
+      e.code === "ArrowLeft") ||
+    (moveDirection.name === "Y" &&
+      currentDirection === -1 &&
+      e.code === "ArrowRight") ||
+    (moveDirection.name === "X" &&
+      currentDirection === 1 &&
+      e.code === "ArrowDown") ||
+    (moveDirection.name === "X" &&
+      currentDirection === -1 &&
+      e.code === "ArrowUp")
+  )
+    newEvent = Object.assign({}, { name: moveDirection.name, value: "-" });
 
   return newEvent;
 }
