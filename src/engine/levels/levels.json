@@ -1,15 +1,5 @@
 [
   {
-    "field": "13",
-    "time": "30000",
-    "timerStep": "1",
-    "food": "5",
-    "lives": "3",
-    "obstacles": [],
-    "bonuses": [],
-    "maxScores": "25"
-  },
-  {
     "field": "17",
     "time": "30000",
     "timerStep": "1",

@@ -12,6 +12,8 @@ function gameOver(value: string): void {
   stopTimer();
   value === "lives limit"
     ? alert("Game over! Lives limit! Press OK to replay...")
+    : value === "no moves"
+    ? alert("Game over! No moves! Press OK to replay...")
     : alert("Game over! Time limit! Press OK to replay...");
   localStorage.setItem("protocol", JSON.stringify(getProtocol()));
   location.reload();
