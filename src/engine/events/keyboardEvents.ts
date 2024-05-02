@@ -23,7 +23,6 @@ function keyboardEvents(e: KeyboardEvent) {
   const newSpeed = speedEvent(e);
   const pause =
     findLastMoveDirection().name !== "" ? keyboardPauseEvent(e) : false;
-
   if (!pause && newDirection.name !== "") TIMER.startTimer();
   if (
     (newDirection.name === "" && newSpeed.name === "") ||

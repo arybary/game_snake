@@ -27,31 +27,31 @@ function speedEvent(e: KeyboardEvent): Event {
   const moveDirection = findLastMoveDirection();
   if (!isNaN(+moveDirection.value)) currentDirection = moveDirection.value;
   if (
-    (moveDirection.name === "Y" &&
+    (moveDirection.name === "X" &&
       currentDirection === 1 &&
       e.code === "ArrowRight") ||
-    (moveDirection.name === "Y" &&
+    (moveDirection.name === "X" &&
       currentDirection === -1 &&
       e.code === "ArrowLeft") ||
-    (moveDirection.name === "X" &&
+    (moveDirection.name === "Y" &&
       currentDirection === 1 &&
       e.code === "ArrowUp") ||
-    (moveDirection.name === "X" &&
+    (moveDirection.name === "Y" &&
       currentDirection === -1 &&
       e.code === "ArrowDown")
   )
     newEvent = Object.assign({}, { name: moveDirection.name, value: "+" });
   if (
-    (moveDirection.name === "Y" &&
+    (moveDirection.name === "X" &&
       currentDirection === 1 &&
       e.code === "ArrowLeft") ||
-    (moveDirection.name === "Y" &&
+    (moveDirection.name === "X" &&
       currentDirection === -1 &&
       e.code === "ArrowRight") ||
-    (moveDirection.name === "X" &&
+    (moveDirection.name === "Y" &&
       currentDirection === 1 &&
       e.code === "ArrowDown") ||
-    (moveDirection.name === "X" &&
+    (moveDirection.name === "Y" &&
       currentDirection === -1 &&
       e.code === "ArrowUp")
   )

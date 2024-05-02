@@ -14,8 +14,12 @@ function gameOver(value: string): void {
   const { toggleModal, selectTitleMenu } = useMenuStore();
   toggleModal();
   value === "lives limit"
+
     ? selectTitleMenu("Game over! Lives limit! Press OK to replay...")
+    : value === "no moves"
+    ? selectTitleMenu("Game over! No moves! Press OK to replay...")
     : selectTitleMenu("Game over! Time limit! Press OK to replay...");
+
   localStorage.setItem("protocol", JSON.stringify(getProtocol()));
   location.reload();
 }

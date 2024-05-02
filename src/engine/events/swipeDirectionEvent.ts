@@ -44,21 +44,21 @@ const swipeDirectionEvent = (): Event => {
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       if (
         yDiff > 0 &&
-        moveDirection.name !== "X" &&
+        moveDirection.name !== "Y" &&
         findLastMoveDirection().name !== ""
       ) {
-        newEvent.name = "X";
+        newEvent.name = "Y";
         newEvent.value = -1;
-      } else if (yDiff < 0 && moveDirection.name !== "X") {
-        newEvent.name = "X";
+      } else if (yDiff < 0 && moveDirection.name !== "Y") {
+        newEvent.name = "Y";
         newEvent.value = 1;
       }
     } else {
-      if (xDiff > 0 && moveDirection.name !== "Y") {
-        newEvent.name = "Y";
+      if (xDiff > 0 && moveDirection.name !== "X") {
+        newEvent.name = "X";
         newEvent.value = 1;
-      } else if (xDiff < 0 && moveDirection.name !== "Y") {
-        newEvent.name = "Y";
+      } else if (xDiff < 0 && moveDirection.name !== "X") {
+        newEvent.name = "X";
         newEvent.value = -1;
       }
     }
@@ -68,26 +68,26 @@ const swipeDirectionEvent = (): Event => {
     }
     if (Math.abs(xDiff) < Math.abs(yDiff)) {
       const snakeStep =
-        getSnakeHeadParams().snakeHeadStepX === 0
-          ? previousHeadParams.snakeHeadStepX
-          : getSnakeHeadParams().snakeHeadStepX;
-      if (yDiff > 0 && moveDirection.name === "X") {
-        newEvent.name = "X";
+        getSnakeHeadParams().snakeHeadStepY === 0
+          ? previousHeadParams.snakeHeadStepY
+          : getSnakeHeadParams().snakeHeadStepY;
+      if (yDiff > 0 && moveDirection.name === "Y") {
+        newEvent.name = "Y";
         newEvent.value = snakeStep !== 1 ? "+" : "-";
-      } else if (yDiff < 0 && moveDirection.name === "X") {
-        newEvent.name = "X";
+      } else if (yDiff < 0 && moveDirection.name === "Y") {
+        newEvent.name = "Y";
         newEvent.value = snakeStep !== -1 ? "+" : "-";
       }
     } else {
       const snakeStep =
-        getSnakeHeadParams().snakeHeadStepY === 0
-          ? previousHeadParams.snakeHeadStepY
-          : getSnakeHeadParams().snakeHeadStepY;
-      if (xDiff > 0 && moveDirection.name === "Y") {
-        newEvent.name = "Y";
+        getSnakeHeadParams().snakeHeadStepX === 0
+          ? previousHeadParams.snakeHeadStepX
+          : getSnakeHeadParams().snakeHeadStepX;
+      if (xDiff > 0 && moveDirection.name === "X") {
+        newEvent.name = "X";
         newEvent.value = snakeStep !== -1 ? "+" : "-";
-      } else if (xDiff < 0 && moveDirection.name === "Y") {
-        newEvent.name = "Y";
+      } else if (xDiff < 0 && moveDirection.name === "X") {
+        newEvent.name = "X";
         newEvent.value = snakeStep !== 1 ? "+" : "-";
       }
     }
