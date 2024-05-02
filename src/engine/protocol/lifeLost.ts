@@ -2,7 +2,10 @@
  *  @module lifeLost.ts Обрабатывает событие потери жизни игроком
  *     @function lifeLost Выполняет действия при потере жизни
  */
-import noMoves from "../events/noMovesEvent";
+
+
+import { useMenuStore } from "../../store/menuStore"
+
 import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
 import { getLives, setLives } from "../lives/lives";
 import { getSnakeHeadParams } from "../snake/snake";
@@ -16,18 +19,22 @@ import protocolExecutor from "./protocolExecutor";
  *      3. Возвращает игру в состояние ожидания новых действий игрока
  */
 function lifeLost(): void {
+  const { toggleModal, selectTitleMenu } = useMenuStore.getState();
   stopTimer();
-  if (checkMistake()) {
-    alert(
-      `You made a mistake ${getSnakeHeadParams().snakeHeadCoordX} : ${
-        getSnakeHeadParams().snakeHeadCoordY
-      } here! Be careful! You only have ${getLives()} lives left!`
-    );
-    setLives(-1);
-    if (noMoves(getSnakeHeadParams()))
-      protocolExecutor({ name: "game over", value: "no moves" });
 
-    noMistakeWasMade();
+  if (checkMistake()) {
+
+    setTimeout(() => {
+      selectTitleMenu(
+        `You made a mistake ${getSnakeHeadParams().snakeHeadCoordX} : ${
+          getSnakeHeadParams().snakeHeadCoordY
+        } here! Be careful! You only have ${getLives()} lives left!`
+      );
+      toggleModal();
+      setLives(-1);
+      noMistakeWasMade();
+    }, 500);
+
   }
 }
 
