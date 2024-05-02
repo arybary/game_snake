@@ -10,7 +10,7 @@ import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
 import { getLives, setLives } from "../lives/lives";
 import { getSnakeHeadParams } from "../snake/snake";
 import { stopTimer } from "../time/isTimer";
-import protocolExecutor from "./protocolExecutor";
+
 /**
  *  Запускается при потере жизни игроком
  *  @description
