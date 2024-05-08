@@ -4,6 +4,7 @@ import GameInfo from "../GameInfo/GameInfo";
 import swipeDirectionEvent from "../../engine/events/swipeDirectionEvent";
 import { setTouch } from "../../engine/events/touchEvent";
 import protocolExecutor from "../../engine/protocol/protocolExecutor";
+import GameButtons from "../GameButtons/GameButtons";
 
 function Wrapper({ children }: { children: ReactNode }) {
   const startTouch = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -20,6 +21,7 @@ function Wrapper({ children }: { children: ReactNode }) {
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
       <GameInfo />
       {children}
+      <GameButtons />
     </div>
   );
 }
