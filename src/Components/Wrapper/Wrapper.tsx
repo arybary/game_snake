@@ -24,10 +24,8 @@ function Wrapper({ children }: { children: ReactNode }) {
   return (
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
       <GameInfo />
-      {children}
-      <GameButtons />
-
       {isVisible ? <Menu /> : children}
+      <GameButtons />
     </div>
   );
 }
