@@ -26,7 +26,7 @@ function setBonusEvent(): void {
           getObstaclesXCoord(),
           getObstaclesYCoord(),
           SNAKE.getSnakeBodyCoord(),
-          getFoodCoord()
+          [getFoodCoord()]
         )
       )
     );
