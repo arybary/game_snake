@@ -22,6 +22,7 @@ body {
   height: 100vmin;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   background: #293447;
 }
