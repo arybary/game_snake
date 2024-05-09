@@ -4,6 +4,7 @@ import GameInfo from "../GameInfo/GameInfo";
 import swipeDirectionEvent from "../../engine/events/swipeDirectionEvent";
 import { setTouch } from "../../engine/events/touchEvent";
 import protocolExecutor from "../../engine/protocol/protocolExecutor";
+import GameButtons from "../GameButtons/GameButtons";
 import { useMenuStore } from "../../store/menuStore";
 import Menu from "../Menu/Menu";
 
@@ -23,8 +24,8 @@ function Wrapper({ children }: { children: ReactNode }) {
   return (
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
       <GameInfo />
-
       {isVisible ? <Menu /> : children}
+      <GameButtons />
     </div>
   );
 }
