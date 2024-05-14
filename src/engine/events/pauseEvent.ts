@@ -6,6 +6,7 @@
  *     @function keyboardPauseEvent Отрабатывает нажатие клавиши "Space"
  *     @function touchPauseEvent Отрабатывает касание экрана
  */
+import { usePauseStore } from "../../store/menuStore";
 import { stopTimer } from "../time/isTimer";
 /**
  * При значении true - игра на паузе, false - нет
@@ -31,6 +32,8 @@ export function swapPause() {
  */
 export function keyboardPauseEvent(e: KeyboardEvent): boolean {
   if (e.code === "Space") {
+    const{togglePause}=usePauseStore.getState();
+    togglePause()
     swapPause();
     stopTimer();
   }

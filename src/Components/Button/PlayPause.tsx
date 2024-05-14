@@ -1,12 +1,17 @@
 // PlayPause.js
 import { useState } from "react";
 import "../Button/PlayPause.css";
+import { usePauseStore } from "../../store/menuStore";
+import { swapPause } from "../../engine/events/pauseEvent";
+import { stopTimer } from "../../engine/time/isTimer";
 
 function PlayPause() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const{isPause,togglePause}=usePauseStore()
 
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+   togglePause()
+   swapPause();
+   stopTimer();
   };
 
   // const handleKeyPress = (event: { key: unknown }) => {
@@ -18,7 +23,7 @@ function PlayPause() {
   return (
     <button className="play-button" onClick={togglePlayPause}>
       <i
-        className={`fas fa-duotone  ${isPlaying ? "fa-play" : "fa-pause"}`}
+        className={`fas fa-duotone  ${isPause ? "fa-play" : "fa-pause"}`}
       ></i>
     </button>
     // <div
