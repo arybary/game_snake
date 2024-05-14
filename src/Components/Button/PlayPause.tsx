@@ -1,5 +1,3 @@
-// PlayPause.js
-import { useState } from "react";
 import "../Button/PlayPause.css";
 import { usePauseStore } from "../../store/menuStore";
 import { swapPause } from "../../engine/events/pauseEvent";
