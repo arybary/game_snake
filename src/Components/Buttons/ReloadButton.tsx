@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ReloadButton.css"; // Подключаем стили
+import handleKeyDown from "./handleKeyDown";
 
 const ReloadButton: React.FC = () => {
   const [isAnimating, setIsAnimating] = useState(false); // Состояние анимации
@@ -10,7 +11,11 @@ const ReloadButton: React.FC = () => {
   };
 
   return (
-    <button className="refresh-button" onClick={handleClick}>
+    <button
+      className="refresh-button"
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
       <i className={`fas fa-refresh ${isAnimating ? "fa-spin" : ""}`}></i>
     </button>
   );
