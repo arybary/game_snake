@@ -1,14 +1,14 @@
-import "../GameButtons/GameButton.css";
-import PlayPause from "../Button/PlayPause";
-import ReloadButton from "../Button/ReloadButton";
-import Burger from "../Button/Burger";
+import "../GameButtons/GameButtons.css";
+import PauseButton from "../Buttons/PauseButton";
+import ReloadButton from "../Buttons/ReloadButton";
+import MenuButton from "../Buttons/MenuButton";
 
 function GameButtons() {
   return (
     <div className="game-button">
-      <PlayPause />
+      <PauseButton />
       <ReloadButton />
-      <Burger />
+      <MenuButton />
     </div>
   );
 }
