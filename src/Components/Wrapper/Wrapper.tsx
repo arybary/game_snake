@@ -5,7 +5,7 @@ import swipeDirectionEvent from "../../engine/events/swipeDirectionEvent";
 import { setTouch } from "../../engine/events/touchEvent";
 import protocolExecutor from "../../engine/protocol/protocolExecutor";
 import GameButtons from "../GameButtons/GameButtons";
-import { useMenuStore } from "../../store/menuStore";
+
 
 
 function Wrapper({ children }: { children: ReactNode }) {
@@ -18,9 +18,6 @@ function Wrapper({ children }: { children: ReactNode }) {
     setTouch("end", touches[0].clientX, touches[0].clientY);
     protocolExecutor(swipeDirectionEvent());
   };
-
-
-
   return (
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
       <GameInfo />
