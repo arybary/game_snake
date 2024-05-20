@@ -5,16 +5,15 @@ import { useMenuStore } from "./store/menuStore";
 import Menu from "./Components/Menu/Menu";
 
 function App() {
-
   const { isVisible } = useMenuStore();
   return (
     <>
-    <Wrapper>
-      <Canvas>
-        <Game />
-      </Canvas>
-    </Wrapper>
-    {isVisible && <Menu />}
+      <Wrapper>
+        <Canvas>
+          <Game />
+        </Canvas>
+        {isVisible && <Menu />}
+      </Wrapper>
     </>
   );
 }
