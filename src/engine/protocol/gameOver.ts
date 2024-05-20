@@ -11,10 +11,9 @@ import { getProtocol } from "./protocol";
  */
 function gameOver(value: string): void {
   stopTimer();
-  const { toggleModal, selectTitleMenu } = useMenuStore();
+  const { toggleModal, selectTitleMenu } = useMenuStore.getState();
   toggleModal();
   value === "lives limit"
-
     ? selectTitleMenu("Game over! Lives limit! Press OK to replay...")
     : value === "no moves"
     ? selectTitleMenu("Game over! No moves! Press OK to replay...")

@@ -32,8 +32,8 @@ export function swapPause() {
  */
 export function keyboardPauseEvent(e: KeyboardEvent): boolean {
   if (e.code === "Space") {
-    const{togglePause}=usePauseStore.getState();
-    togglePause()
+    const { togglePause } = usePauseStore.getState();
+    togglePause();
     swapPause();
     stopTimer();
   }
@@ -45,6 +45,6 @@ export function keyboardPauseEvent(e: KeyboardEvent): boolean {
  * @return true если игра останавливается на паузу  и false если нет
  */
 export function touchPauseEvent() {
-  swapPause();
-  stopTimer();
+  // swapPause();
+  // stopTimer();
 }

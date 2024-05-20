@@ -6,8 +6,6 @@ import { setTouch } from "../../engine/events/touchEvent";
 import protocolExecutor from "../../engine/protocol/protocolExecutor";
 import GameButtons from "../GameButtons/GameButtons";
 
-
-
 function Wrapper({ children }: { children: ReactNode }) {
   const startTouch = (e: React.TouchEvent<HTMLDivElement>) => {
     const touches = e.changedTouches;
@@ -21,7 +19,7 @@ function Wrapper({ children }: { children: ReactNode }) {
   return (
     <div className="wrapper" onTouchStart={startTouch} onTouchEnd={endTouch}>
       <GameInfo />
-      { children}
+      {children}
       <GameButtons />
     </div>
   );
