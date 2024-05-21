@@ -34,6 +34,7 @@ body {
   padding: 2vmin 1vmin;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 /* @media screen and (max-width: 800px) {

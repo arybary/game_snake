@@ -10,17 +10,20 @@ import { getProtocol } from "./protocol";
  * @param value параметр окончания игры: истекло время или кончились жизни
  */
 function gameOver(value: string): void {
-  stopTimer();
   const { toggleModal, selectTitleMenu } = useMenuStore.getState();
-  toggleModal();
+  stopTimer();
+
   value === "lives limit"
     ? selectTitleMenu("Game over! Lives limit! Press OK to replay...")
     : value === "no moves"
     ? selectTitleMenu("Game over! No moves! Press OK to replay...")
-    : selectTitleMenu("Game over! Time limit! Press OK to replay...");
+    : () => {
+        toggleModal();
+        selectTitleMenu("Game over! Time limit! Press OK to replay...");
+      };
+  // toggleModal();
 
   localStorage.setItem("protocol", JSON.stringify(getProtocol()));
-  location.reload();
 }
 
 export default gameOver;
