@@ -3,8 +3,7 @@
  *     @function lifeLost Выполняет действия при потере жизни
  */
 
-
-import { useMenuStore } from "../../store/menuStore"
+import { useMenuStore } from "../../store/menuStore";
 
 import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
 import { getLives, setLives } from "../lives/lives";
@@ -23,7 +22,6 @@ function lifeLost(): void {
   stopTimer();
 
   if (checkMistake()) {
-
     setTimeout(() => {
       selectTitleMenu(
         `You made a mistake ${getSnakeHeadParams().snakeHeadCoordX} : ${
@@ -34,7 +32,6 @@ function lifeLost(): void {
       setLives(-1);
       noMistakeWasMade();
     }, 500);
-
   }
 }
 
