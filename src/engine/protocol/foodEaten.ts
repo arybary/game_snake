@@ -15,6 +15,7 @@ function foodEaten() {
   setFood(1);
   setScores(getDoubleScoresFood() ? getFoodScores() * 2 : getFoodScores());
   if (!getStopsGrowing()) SNAKE.addSnakeBodyCoord([]);
+  moveSnake();
 }
 
 export default foodEaten;

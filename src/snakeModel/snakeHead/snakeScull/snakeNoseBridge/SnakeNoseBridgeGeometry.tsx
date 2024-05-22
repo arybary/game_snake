@@ -12,7 +12,7 @@ function SnakeNoseBridgeGeometry() {
   const allNoseBridgeFaces = noseBridgeFaceEFI.concat(noseBridgeFaceHEI);
   const noseBridgeVertices = new Float32Array(allNoseBridgeFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={noseBridgeVertices.length / 3}

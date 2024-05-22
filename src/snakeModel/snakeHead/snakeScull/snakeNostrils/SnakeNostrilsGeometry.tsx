@@ -6,7 +6,7 @@ function SnakeNostrilsGeometry() {
   const allNostrilsFaces = nostrilsFaceKMO.concat(nostrilsFaceLNP);
   const nostrilsVertices = new Float32Array(allNostrilsFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={nostrilsVertices.length / 3}

@@ -20,7 +20,7 @@ function SnakeBodyGeometry() {
   );
   const vertices = new Float32Array(allFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={vertices.length / 3}

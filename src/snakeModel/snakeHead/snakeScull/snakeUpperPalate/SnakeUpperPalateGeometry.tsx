@@ -44,7 +44,7 @@ function SnakeUpperPalateGeometry() {
   );
   const upperPalatesVertices = new Float32Array(allUpperPalateFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={upperPalatesVertices.length / 3}

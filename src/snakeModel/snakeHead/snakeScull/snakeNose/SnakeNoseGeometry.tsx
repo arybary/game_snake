@@ -6,7 +6,7 @@ function SnakeNoseGeometry() {
   const allNoseFaces = noseFaceHIL.concat(noseFaceKHL);
   const noseVertices = new Float32Array(allNoseFaces);
   return (
-    <bufferGeometry>
+    <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute
         attach="attributes-position"
         count={noseVertices.length / 3}
