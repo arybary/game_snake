@@ -7,6 +7,7 @@ import { getStopsGrowing } from "../bonuses/bonusSnakeStopsGrowing";
 import { getFoodScores } from "../food/food";
 import setFood from "../food/setFood";
 import { setScores } from "../scores/scores";
+import moveSnake from "../snake/moveSnake";
 import * as SNAKE from "../snake/snake";
 /**
  * Выводит новую еду, задает вознаграждение, добавляет длину змейке, если можно

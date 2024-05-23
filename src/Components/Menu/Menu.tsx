@@ -8,14 +8,8 @@ const Menu: React.FC = () => {
     <div
       className="menu-game"
       onClick={() => {
-        if (
-          titleMenu === "Game over! Lives limit! Press OK to replay..." ||
-          titleMenu === "Game over! No moves! Press OK to replay..." ||
-          titleMenu === "Game over! Time limit! Press OK to replay..."
-        ) {
-          location.reload();
-        }
-        toggleModal();
+        if (titleMenu[0] === "G") location.reload();
+        else toggleModal();
       }}
     >
       <h2>{titleMenu}</h2>

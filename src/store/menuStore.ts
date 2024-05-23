@@ -15,11 +15,9 @@ export const useMenuStore = create<MenuState>((set) => ({
 }));
 interface PauseState {
   isPause: boolean;
-
   togglePause: () => void;
 }
 export const usePauseStore = create<PauseState>((set) => ({
   isPause: true,
-
   togglePause: () => set((state) => ({ isPause: !state.isPause })),
 }));

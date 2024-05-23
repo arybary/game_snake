@@ -13,7 +13,7 @@ import { getFoodEaten } from "../../engine/events/snakeCatchesFoodEvent";
 import { howMuchIsLeftToEat } from "../../engine/food/currentFoodNumber";
 
 const Food: React.FC = () => {
-  const gltf = useLoader(GLTFLoader, "/chiken.glb");
+  const gltf = useLoader(GLTFLoader, "/apple.glb");
 
   const [foodPosition, setFoodPosition] = useState<Vector3>([0, 0, 0.5]);
   useEffect(() => {
