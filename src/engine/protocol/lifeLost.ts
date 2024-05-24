@@ -4,7 +4,10 @@
  */
 
 import { useMenuStore } from "../../store/menuStore";
-
+import {
+  getInterruptGame,
+  interruptGameEvent,
+} from "../events/interruptGameEvent";
 import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
 import { getLives, setLives } from "../lives/lives";
 import { getSnakeHeadParams } from "../snake/snake";
@@ -22,16 +25,17 @@ function lifeLost(): void {
   stopTimer();
 
   if (checkMistake()) {
-    setTimeout(() => {
-      selectTitleMenu(
-        `You made a mistake ${getSnakeHeadParams().snakeHeadCoordX} : ${
-          getSnakeHeadParams().snakeHeadCoordY
-        } here! Be careful! You only have ${getLives()} lives left!`
-      );
-      toggleModal();
-      setLives(-1);
-      noMistakeWasMade();
-    }, 500);
+    selectTitleMenu(
+      `You made a mistake ${getSnakeHeadParams().snakeHeadCoordX} : ${
+        getSnakeHeadParams().snakeHeadCoordY
+      } here! Be careful! You only have ${getLives()} lives left!`
+    );
+    toggleModal();
+    setLives(-1);
+    noMistakeWasMade();
+    interruptGameEvent();
+    if (getInterruptGame())
+      selectTitleMenu("Game over! Lives limit! Press OK to replay...`");
   }
 }
 

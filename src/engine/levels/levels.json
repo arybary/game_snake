@@ -1,7 +1,7 @@
 [
   {
     "field": "17",
-    "time": "30000",
+    "time": "10000",
     "timerStep": "1",
     "food": "10",
     "lives": "3",
