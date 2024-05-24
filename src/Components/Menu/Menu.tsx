@@ -8,7 +8,7 @@ const Menu: React.FC = () => {
     <div
       className="menu-game"
       onClick={() => {
-        if (titleMenu[0] === "G") location.reload();
+        if (titleMenu.indexOf("Game over") !== -1) location.reload();
         else toggleModal();
       }}
     >
