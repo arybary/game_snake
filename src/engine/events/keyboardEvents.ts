@@ -11,7 +11,7 @@ import { checkMistake } from "../lives/isMistake";
 import { getTimer } from "../time/timer";
 import protocolExecutor from "../protocol/protocolExecutor";
 import { howMuchIsLeftToEat } from "../food/currentFoodNumber";
-import findLastMoveDirection from "../protocol/findLastMoveDirection";
+// import findLastMoveDirection from "../protocol/findLastMoveDirection";
 // import { checkExecution } from "../protocol/protocolExecutor";
 /**
  * Следит за нажатием клавиш со стрелками и Space
@@ -21,8 +21,8 @@ import findLastMoveDirection from "../protocol/findLastMoveDirection";
 function keyboardEvents(e: KeyboardEvent) {
   const newDirection = changeDirectionEvent(e);
   const newSpeed = speedEvent(e);
-  const pause =
-    findLastMoveDirection().name !== "" ? keyboardPauseEvent(e) : false;
+  const pause = keyboardPauseEvent(e);
+  // findLastMoveDirection().name !== "" ? keyboardPauseEvent(e) : false;
   if (!pause && newDirection.name !== "") TIMER.startTimer();
   if (
     (newDirection.name === "" && newSpeed.name === "") ||

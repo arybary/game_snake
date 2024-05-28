@@ -6,16 +6,18 @@ import handleKeyDown from "./handleKeyDown";
 
 function PauseButton() {
   const { isPause, togglePause } = usePauseStore();
+  const { titleMenu, toggleModal, selectTitleMenu } = useMenuStore.getState();
   const { isVisible } = useMenuStore();
 
   const togglePlayPause = () => {
-    if (!isVisible) {
+    if (!isVisible || (isVisible && titleMenu === "Pause")) {
+      toggleModal();
+      selectTitleMenu("Pause");
       togglePause();
       swapPause();
       stopTimer();
     }
   };
-
   return (
     <button
       className="play-button"
