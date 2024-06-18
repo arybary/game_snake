@@ -22,6 +22,7 @@ import { getBonusParams, setBonusParams } from "./bonusParams";
  * @param index номер текщего бонуса в массиве бонусов
  */
 export function selectBonusToDisplay(bonus: BonusProps, index: number): void {
+
   const isAdd = checkAddTime() || checkAddLives() || checkAddScores();
   if (
     getCurrentFoodNumber() === bonus.startFood &&

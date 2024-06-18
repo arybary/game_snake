@@ -10,7 +10,11 @@ import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
 import { a, useSprings } from "@react-spring/three";
 import { SnakePositionAnimationProps } from "../../types/three";
 
-const Snake: React.FC = () => {
+interface SnakeProps {
+  onHeadPositionUpdate: (position: [number, number, number]) => void;
+}
+
+const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
   const snake: SnakePositionAnimationProps[] = [
     {
       initialPosition: [0, 0, 0],
@@ -32,6 +36,16 @@ const Snake: React.FC = () => {
       config: { duration: 80 },
     }))
   );
+
+  // Обновляем позицию головы змеи
+  React.useEffect(() => {
+    if (move[0]) {
+      move[0].position.to((x, y, z) => {
+        onHeadPositionUpdate([x, y, z]);
+      });
+    }
+  }, [move, onHeadPositionUpdate]);
+
   return (
     <group>
       {move.map((item, index) => {

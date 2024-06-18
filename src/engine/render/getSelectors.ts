@@ -17,6 +17,7 @@ function getSelectors(): GameElements {
     lifeElement: document.querySelector(".fa-heart"),
     speedElement: document.querySelector(".fa-gauge-high"),
     controls: document.querySelectorAll(".controls i"),
+    bonusElement: document.querySelector(".fa-gift"),
   };
 
   return elements;
