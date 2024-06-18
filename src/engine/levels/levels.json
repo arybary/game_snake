@@ -3,15 +3,15 @@
     "field": "17",
     "time": "100000",
     "timerStep": "1",
-    "food": "10",
+    "food": "30",
     "lives": "3",
     "obstacles": ["fix", "fix", "fix", "fix", "fix"],
     "bonuses": [
       {
-        "type": "snakeBreaksObstacles",
-        "value": "3",
-        "startFood": "0",
-        "endFood": "2"
+        "type": "snakeStopsGrowing",
+        "value": "10",
+        "startFood": "1",
+        "endFood": "3"
       }
     ],
     "maxScores": "30"

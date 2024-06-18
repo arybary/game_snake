@@ -7,4 +7,5 @@ export type GameElements = {
   lifeElement: HTMLElement | null;
   speedElement: HTMLElement | null;
   controls: NodeList | null;
+  bonusElement: HTMLElement | null;
 };
