@@ -1,6 +1,6 @@
 import { useThree, useFrame } from "@react-three/fiber";
 import { getField } from "../../engine/field/fieldPerLevel";
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
 import Fields from "../Field/Field";
 import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
 import { ObstaclesFix, ObstaclesX, ObstaclesY } from "../Obstacles/Obstacles";
