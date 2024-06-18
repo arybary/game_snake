@@ -32,9 +32,8 @@ export function swapPause() {
  */
 export function keyboardPauseEvent(e: KeyboardEvent): boolean {
   if (e.code === "Space") {
-    const { isPause, togglePause } = usePauseStore.getState();
-    const { isVisible, toggleModal, selectTitleMenu } = useMenuStore.getState();
-    console.log({ isPause, isVisible });
+    const { togglePause } = usePauseStore.getState();
+    const { toggleModal, selectTitleMenu } = useMenuStore.getState();
     toggleModal();
     selectTitleMenu("Pause");
     togglePause();

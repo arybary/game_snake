@@ -24,6 +24,7 @@ function renderInfo(): void {
     timeElement,
     levelElement,
     lifeElement,
+    bonusElement,
     speedElement,
   } = getSelectors();
   if (howMuchIsLeftToEat() === 0) setScores(getLives());
@@ -39,6 +40,10 @@ function renderInfo(): void {
     lifeElement.innerHTML = ` ${
       getLives() < 0 || howMuchIsLeftToEat() === 0 ? 0 : getLives()
     }`;
+  if (bonusElement) {
+    bonusElement.style.opacity = "0.5";
+    bonusElement.innerHTML = " 0";
+  }
   if (speedElement)
     speedElement.innerHTML = ` ${
       checkTimerStep() || checkPause() ? 0 : getStep()

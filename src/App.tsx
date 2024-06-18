@@ -6,6 +6,7 @@ import Menu from "./Components/Menu/Menu";
 
 function App() {
   const { isVisible } = useMenuStore();
+
   return (
     <>
       <Wrapper>

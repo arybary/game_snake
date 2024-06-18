@@ -8,6 +8,7 @@ import { getBonuses } from "../../engine/bonuses/bonusesPerLevel";
 import Bonuses from "../Bonuses/Bonuses";
 import Snake from "../Snake/Snake";
 import Food from "../Food/Food";
+import { getAmountOfFood } from "../../engine/food/amountOfFoodPerLevel";
 
 function GamePlay() {
   const gridSize = getField();
@@ -17,9 +18,15 @@ function GamePlay() {
       {/* <OrbitControls /> */}
       <OrthographicCamera
         makeDefault
-        near={0.01}
-        position={[0, 0, 10]}
-        zoom={Math.min(size.width, size.height) / gridSize}
+        left={-10}
+        right={10}
+        top={10}
+        bottom={-10}
+        far={100}
+        near={-100}
+        rotation={[0.7, 0, 0]}
+        position={[0, 0, 1]}
+        zoom={Math.min(size.width, size.height) / gridSize / getAmountOfFood()}
       />
       <ambientLight intensity={0.5} />
       <directionalLight castShadow position={[0, 0, 5]} intensity={1} />
