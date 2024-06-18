@@ -17,6 +17,8 @@ const Bonuses: React.FC = () => {
   const ice = useLoader(GLTFLoader, "/snowflake.glb");
   const bomb = useLoader(GLTFLoader, "/bomb.glb");
   const key = useLoader(GLTFLoader, "/key.glb");
+  const doubleApple = useLoader(GLTFLoader, "/doubleApple.glb");
+  const wallet = useLoader(GLTFLoader, "/wallet.glb");
 
   const [bonusPosition, setBonusPosition] = useState<Vector3>([0, 0, 0]);
 
@@ -97,10 +99,24 @@ const Bonuses: React.FC = () => {
             // <meshStandardMaterial color="#8c6c91" />
           )}
           {getBonuses()[getCurrentBonus()].type === "addExtraScores" && (
-            <meshStandardMaterial color="#997d9e" />
+            <primitive
+              ref={iceRef}
+              object={wallet.scene}
+              position={bonusPosition}
+              scale={0.5}
+              rotation={[Math.PI / 2, 0, 0]}
+            />
+            // <meshStandardMaterial color="#997d9e" />
           )}
           {getBonuses()[getCurrentBonus()].type === "doubleScoresFood" && (
-            <meshStandardMaterial color="#9c89a4" />
+            <primitive
+              ref={iceRef}
+              object={doubleApple.scene}
+              position={bonusPosition}
+              scale={0.25}
+              rotation={[Math.PI / 2, 0, 0]}
+            />
+            // <meshStandardMaterial color="#9c89a4" />
           )}
         </>
       )}

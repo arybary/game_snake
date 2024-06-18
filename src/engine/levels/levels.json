@@ -8,7 +8,7 @@
     "obstacles": ["fix", "fix", "fix", "fix", "fix"],
     "bonuses": [
       {
-        "type": "snakeCrossesBorders",
+        "type": "doubleScoresFood",
         "value": "2",
         "startFood": "0",
         "endFood": "2"
