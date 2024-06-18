@@ -1,6 +1,6 @@
 import { useThree, useFrame } from "@react-three/fiber";
 import { getField } from "../../engine/field/fieldPerLevel";
-import { OrthographicCamera } from "@react-three/drei";
+import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import Fields from "../Field/Field";
 import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
 import { ObstaclesFix, ObstaclesX, ObstaclesY } from "../Obstacles/Obstacles";
@@ -29,6 +29,7 @@ function GamePlay() {
 
   return (
     <mesh>
+
       <OrthographicCamera
         makeDefault
 
