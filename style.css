@@ -18,8 +18,8 @@ body {
 }
 
 .wrapper {
-  width: 85vmin;
-  height: 100vmin;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
