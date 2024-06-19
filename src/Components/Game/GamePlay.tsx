@@ -14,29 +14,35 @@ import { getAmountOfFood } from "../../engine/food/amountOfFoodPerLevel";
 import { useRef } from "react";
 import { Vector3 } from "three";
 
-
 function GamePlay() {
   const gridSize = getField();
   const { size, camera } = useThree();
   const headPosition = useRef(new Vector3(0, 0, 0));
   const targetPosition = useRef(new Vector3(0, 0, 5)); // Уменьшили значение Z до 5
 
+  const aspect = size.width / size.height;
+
+  const cameraHeight = gridSize;
+  const cameraWidth = cameraHeight * aspect;
+
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.1);
-    camera.position.set(targetPosition.current.x, targetPosition.current.y, 3.5);
+    camera.position.set(
+      targetPosition.current.x,
+      targetPosition.current.y,
+      3.5
+    );
     camera.updateProjectionMatrix();
   });
 
   return (
     <mesh>
-
       <OrthographicCamera
         makeDefault
-
-        left={-10}
-        right={10}
-        top={10}
-        bottom={-10}
+        left={-cameraWidth / 2}
+        right={cameraWidth / 2}
+        top={cameraHeight / 2}
+        bottom={-cameraHeight / 2}
         far={100}
         near={-100}
         rotation={[0.7, 0, 0]}
@@ -54,7 +60,11 @@ function GamePlay() {
         </>
       )}
       {getBonuses().length !== 0 && <Bonuses />}
-      <Snake onHeadPositionUpdate={(position) => headPosition.current.set(...position)} />
+      <Snake
+        onHeadPositionUpdate={(position) =>
+          headPosition.current.set(...position)
+        }
+      />
       <Food />
     </mesh>
   );
