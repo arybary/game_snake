@@ -14,9 +14,9 @@ import { getSnakeBodyCoord } from "../snake/snake";
  * @returns возвращает true, если ячейка свободна, и false, если занята
  */
 const cellCheck = (cell: number[]): boolean => {
-  let [cellX, cellY] = cell;
-  let bookedCells: number[][] = [];
-  let isFree: boolean;
+  const [cellX, cellY] = cell;
+  const bookedCells: number[][] = [];
+  let isFree = false;
   bookedCells.push(
     getFoodCoord(),
     getObstaclesFixCoord().flat(),

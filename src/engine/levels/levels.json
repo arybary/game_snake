@@ -1,14 +1,13 @@
 [
   {
-    "field": "17",
+    "field": "101",
     "time": "100000",
     "timerStep": "1",
-    "food": "30",
+    "food": "25",
     "lives": "3",
     "obstacles": ["fix", "fix", "fix", "fix", "fix"],
     "bonuses": [
       {
-
         "type": "doubleScoresFood",
         "value": "2",
         "startFood": "0",
@@ -19,7 +18,6 @@
         "value": "1",
         "startFood": "3",
         "endFood": "5"
-
       }
     ],
     "maxScores": "30"
