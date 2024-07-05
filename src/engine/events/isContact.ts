@@ -2,6 +2,8 @@
  *  @module isContact.ts Обрабатывает запрещенный контакт головы змейки
  *     @function isContact Запускается при контакте змейки с объектом игры
  */
+let contact = false;
+
 import { SnakeHeadCoord } from "../../types/snake";
 import { mistakeWasMade } from "../lives/isMistake";
 import protocolExecutor from "../protocol/protocolExecutor";
@@ -15,7 +17,11 @@ import protocolExecutor from "../protocol/protocolExecutor";
  *  3. фиксирует событие контакта головы змейки с препятствием
  * @returns Измененные параметры головы змейки
  */
-function isContact(snakeHead: SnakeHeadCoord, mistake: string): SnakeHeadCoord {
+export function isContact(
+  snakeHead: SnakeHeadCoord,
+  mistake: string
+): SnakeHeadCoord {
+  contact = true;
   snakeHead.snakeHeadStepX = 0;
   snakeHead.snakeHeadStepY = 0;
   const coordX = snakeHead.snakeHeadCoordX;
@@ -30,4 +36,10 @@ function isContact(snakeHead: SnakeHeadCoord, mistake: string): SnakeHeadCoord {
   return snakeHead;
 }
 
-export default isContact;
+export function checkContact(): boolean {
+  return contact;
+}
+
+export function breakContact() {
+  contact = false;
+}

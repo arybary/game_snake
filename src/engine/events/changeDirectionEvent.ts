@@ -40,9 +40,7 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
     getSnakeMoveDirection()[1] === "right"
       ? -1
       : 1;
-  if (!checkTimerWorking()) {
-    moveDirection.name = "";
-  }
+  if (!checkTimerWorking()) moveDirection.name = "";
   if (checkMistake() || checkTimerStep() || getInterruptGame())
     return { name: newName, value: newValue };
   if (e.code === "ArrowUp" && moveDirection.name !== "Y") {

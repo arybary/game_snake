@@ -5,7 +5,7 @@
 import { SnakeHeadCoord } from "../../types/snake";
 import { getCrossesBorders } from "../bonuses/bonusSnakeCrossesBorders";
 import { getField } from "../field/fieldPerLevel";
-import isContact from "./isContact";
+import { isContact } from "./isContact";
 import isCross from "./isCross";
 /**
  * Срабатывает при контакте головы змейки с краем поля
