@@ -3,7 +3,9 @@
  *    @function moveSnake Двигает змейку по игровому полю
  */
 import allContactEvents from "../events/allContactEvents";
-import { checkTimerWorking } from "../time/isTimer";
+import { breakContact } from "../events/isContact";
+import { checkMistake } from "../lives/isMistake";
+import { checkTimerWorking, startTimer } from "../time/isTimer";
 import * as SNAKE from "./snake";
 /**
  * Изменяет координаты головы и тела змейки по осям только во время игры
@@ -27,7 +29,8 @@ function moveSnake(): void {
       snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY;
       snakeHead = allContactEvents(snakeHead);
       SNAKE.setSnakeHeadParams(snakeHead);
-      if (checkTimerWorking()) {
+      if (checkTimerWorking() && !checkMistake()) {
+        breakContact();
         for (let i = newBodyCoord.length - 1; i > 0; i--)
           newBodyCoord[i] = newBodyCoord[i - 1];
         newBodyCoord[0] = [
@@ -35,7 +38,7 @@ function moveSnake(): void {
           snakeHead.snakeHeadCoordY,
         ];
         SNAKE.setSnakeBodyCoord(newBodyCoord);
-      }
+      } else startTimer();
     }
   }
 }

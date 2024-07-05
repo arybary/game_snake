@@ -2,6 +2,7 @@
  *  @module checkTimerStep.ts Проверяет скорость змейки на равенство нулю
  *     @function checkTimerStep Возвращает true, если задана нулевая скорость
  */
+import { checkContact } from "../events/isContact";
 import { checkPause } from "../events/pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
 import { checkTimerWorking } from "./isTimer";
@@ -18,9 +19,11 @@ function checkTimerStep(): boolean {
     getStep() === 1 &&
     snakeHeadStepX === 0 &&
     snakeHeadStepY === 0 &&
-    !checkPause()
+    !checkPause() &&
+    !checkContact()
   )
     timerStepIsNull = true;
+
   return timerStepIsNull;
 }
 

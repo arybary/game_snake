@@ -12,7 +12,7 @@ function noMoves(snakeHeadPos: SnakeHeadCoord): boolean {
     ...getObstaclesXCoord(),
     ...getObstaclesYCoord(),
   ];
-  let prohibitedCells: any[] = [];
+  let prohibitedCells: number[][] = [];
   prohibitedCells = obstacles.concat(getSnakeBodyCoord().slice(5));
   let checkSnakePos: SnakeHeadCoord = { ...snakeHeadPos };
   let contact: boolean;

@@ -16,6 +16,7 @@ function gameOver(value: string): void {
   let titleMenu = "";
   if (value === "no moves") titleMenu = "No moves";
   if (value === "time limit") titleMenu = "Time limit";
+
   if (!isVisible) {
     toggleModal();
     selectTitleMenu(`Game over! ${titleMenu}! Press OK to replay...`);

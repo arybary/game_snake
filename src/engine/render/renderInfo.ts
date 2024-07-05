@@ -14,6 +14,7 @@ import { getMaxScores } from "../scores/maxScoresPerLevel";
 import { getStep } from "../time/timerStepPerLevel";
 import checkTimerStep from "../time/checkTimerStep";
 import { checkPause } from "../events/pauseEvent";
+import { checkContact } from "../events/isContact";
 /**
  * Рендер информации о ходе игры по ссылкам на DOM-элементы
  */
@@ -44,10 +45,11 @@ function renderInfo(): void {
     bonusElement.style.opacity = "0.5";
     bonusElement.innerHTML = " 0";
   }
-  if (speedElement)
+  if (speedElement && !checkContact()) {
     speedElement.innerHTML = ` ${
       checkTimerStep() || checkPause() ? 0 : getStep()
     }`;
+  }
 }
 
 export default renderInfo;

@@ -7,7 +7,7 @@ import { getObstaclesFixCoord } from "../obstacles/obstaclesFix";
 import { getObstaclesXCoord } from "../obstacles/obstaclesX";
 import { getObstaclesYCoord } from "../obstacles/obstaclesY";
 import snakeCoordCompare from "./snakeCoordCompare";
-import isContact from "./isContact";
+import { isContact } from "./isContact";
 import { getBreaksObstacles } from "../bonuses/bonusSnakeBreaksObstacles";
 import isBroken from "./isBroken";
 /**
