@@ -10,7 +10,6 @@ import Food from "../Food/Food";
 import { useRef } from "react";
 import { Vector3 } from "three";
 import { getFoodCoord } from "../../engine/food/food";
-//import { useSpring } from "@react-spring/three";
 import { getStep } from "../../engine/time/timerStepPerLevel";
 
 const previousTargetPosition: Vector3 = new Vector3(0, 0, 5);
@@ -21,11 +20,6 @@ function GamePlay() {
   const headPosition = useRef(new Vector3(0, 0, 0));
   const targetPosition = useRef(new Vector3(0, 0, 5)); // Уменьшили значение Z до 5
   const lightPoint = getFoodCoord();
-  // const { position } = useSpring({
-  //   from: { position: previousTargetPosition },
-  //   to: { position: targetPosition },
-  //   config: { duration: 2000 },
-  // });
   let ratioX = 43;
   let ratioY = 37;
   if (
@@ -39,7 +33,6 @@ function GamePlay() {
   }
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.01 * getStep());
-    // const pos = position.get().current;
     camera.position.set(
       Math.abs(Math.round(targetPosition.current.x)) <= ratioX
         ? targetPosition.current.x

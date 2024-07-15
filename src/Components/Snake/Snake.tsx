@@ -9,21 +9,12 @@ import setSnakeTailProps from "./snakeTail/setSnakeTailProps";
 import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
 import { a, useSprings } from "@react-spring/three";
 import { SnakePositionAnimationProps } from "../../types/three";
-// import findLastMoveDirection from "../../engine/protocol/findLastMoveDirection";
-
-// let lastMoving = "Y";
 
 interface SnakeProps {
   onHeadPositionUpdate: (position: [number, number, number]) => void;
 }
 
 const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
-  // let movingDuration = 2000;
-  // if (findLastMoveDirection().name !== lastMoving) {
-  //   lastMoving = findLastMoveDirection().name;
-  //   // movingDuration = 80;
-  // }
-
   const snake: SnakePositionAnimationProps[] = [
     {
       initialPosition: [0, 0, 0],

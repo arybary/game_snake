@@ -3,6 +3,7 @@
  *     @function lifeLost Выполняет действия при потере жизни
  */
 
+import { setSnakeOpacity } from "../../Components/Snake/setSnakeOpacity";
 import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
 import { setLives } from "../lives/lives";
 import { stopTimer } from "../time/isTimer";
@@ -14,9 +15,19 @@ import { stopTimer } from "../time/isTimer";
  *      3. Возвращает игру в состояние ожидания новых действий игрока
  */
 function lifeLost(): void {
+  let attention = false;
   stopTimer();
   if (checkMistake()) {
     setLives(-1);
+    setInterval(
+      () => {
+        attention = !attention;
+        setSnakeOpacity(attention ? 0.4 : 1);
+      },
+      300,
+      { once: true }
+    );
+
     noMistakeWasMade();
   }
 }
