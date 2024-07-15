@@ -34,10 +34,10 @@ function noMoves(snakeHeadPos: SnakeHeadCoord): boolean {
       if (contact) contacts.push(pos);
     });
     if (
-      checkSnakePos.snakeHeadCoordX < 1 ||
-      checkSnakePos.snakeHeadCoordX > getField() ||
-      checkSnakePos.snakeHeadCoordY < 1 ||
-      checkSnakePos.snakeHeadCoordY > getField()
+      checkSnakePos.snakeHeadCoordX < 0 ||
+      checkSnakePos.snakeHeadCoordX > getField() + 1 ||
+      checkSnakePos.snakeHeadCoordY < 0 ||
+      checkSnakePos.snakeHeadCoordY > getField() + 1
     )
       contacts.push([
         checkSnakePos.snakeHeadCoordX,
