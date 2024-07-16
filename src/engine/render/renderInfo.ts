@@ -15,10 +15,13 @@ import { getStep } from "../time/timerStepPerLevel";
 import checkTimerStep from "../time/checkTimerStep";
 import { checkPause } from "../events/pauseEvent";
 import { checkContact } from "../events/isContact";
+let attention = 0;
 /**
  * Рендер информации о ходе игры по ссылкам на DOM-элементы
  */
 function renderInfo(): void {
+  attention++;
+  const attentionInterval = 4 + getStep();
   const {
     scoreElement,
     leftToEatElement,
@@ -37,10 +40,15 @@ function renderInfo(): void {
       getTimePerLevel() - getTimer() < 0 ? 0 : getTimePerLevel() - getTimer()
     )}`;
   if (levelElement) levelElement.innerHTML = ` ${getCurrentLevel()}`;
-  if (lifeElement)
+  if (lifeElement) {
+    lifeElement.style.opacity = `${
+      checkContact() && attention === attentionInterval ? 0.4 : 1
+    }`;
     lifeElement.innerHTML = ` ${
       getLives() < 0 || howMuchIsLeftToEat() === 0 ? 0 : getLives()
     }`;
+  }
+
   if (bonusElement) {
     bonusElement.style.opacity = "0.5";
     bonusElement.innerHTML = " 0";
@@ -50,6 +58,7 @@ function renderInfo(): void {
       checkTimerStep() || checkPause() ? 0 : getStep()
     }`;
   }
+  if (attention === attentionInterval) attention = 0;
 }
 
 export default renderInfo;

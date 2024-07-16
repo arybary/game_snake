@@ -1,3 +1,4 @@
+import { getSnakeOpacity } from "../../Components/Snake/setSnakeOpacity";
 import { GeometryProps } from "../../types/three";
 import SnakeTailGeometry from "./SnakeTailGeometry";
 import { DoubleSide, Vector3 } from "three";
@@ -13,7 +14,12 @@ function SnakeTail(props: GeometryProps) {
         scale={1}
       >
         <SnakeTailGeometry />
-        <meshStandardMaterial color={0x44abda} side={DoubleSide} />
+        <meshStandardMaterial
+          color={0x44abda}
+          side={DoubleSide}
+          opacity={getSnakeOpacity()}
+          transparent
+        />
       </mesh>
     </group>
   );
